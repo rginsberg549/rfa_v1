@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from "./components/Nav";
 import RequestType from "./components/RequestType";
@@ -8,35 +7,41 @@ import FormObject from "./utils/FormContext";
 import "./App.css";
 
 function App() {
-  const [formObject, setFormObject] = useState({
-    requestType: "",
-    firstName: "",
-    middleName: "",
-    lastName: "",
-    dateOfInjury: "",
-    dateOfBirth: "",
-    claimNumber: "",
-    employer: "",
-    updateContextField: (event) => {
-      const { name, value } = event.target;
-      console.log(name);
-      console.log(value);
-      setFormObject({...formObject, [name]: value})
-      },
-  });
-  
-  console.log(formObject)
+
+  const [state, setState] = useState({});
+
+  useEffect(() => {
+    setState({
+      requestType: "",
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      dateOfInjury: "",
+      dateOfBirth: "",
+      claimNumber: "",
+      employer: ""
+    });
+  }, []);
+
+  const updateContextField = (event) => {
+    const { name, value } = event.target;
+    setState({ ...state, [name]: value });
+  }
 
   return (
     <div className="container">
-      <FormObject.Provider value={formObject}>
-      <Router>
-        <Switch>
-            <Route exact path="/" component={Nav}/>
-            <Route exact path="/request-type" component={RequestType}/>
-            <Route exact path="/new-employee-information" component={EmployeeInformation}/>
-        </Switch>
-      </Router>
+      <FormObject.Provider value={{ state, updateContextField }}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Nav} />
+            <Route exact path="/request-type" >
+              <RequestType />
+            </Route>
+            <Route exact path="/new-employee-information">
+              <EmployeeInformation />
+            </Route>
+          </Switch>
+        </Router>
       </FormObject.Provider>
     </div>
   );

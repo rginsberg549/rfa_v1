@@ -1,7 +1,15 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 
-const FormContext = React.createContext({
+const FormObject = createContext({
   requestType: "",
+  firstName: "",
+  middleName: "",
+  lastName: "",
+  dateOfInjury: "",
+  dateOfBirth: "",
+  claimNumber: "",
+  employer: "",
+  updateContextField: () => {}
 });
 
-export default FormContext;
+export default FormObject;

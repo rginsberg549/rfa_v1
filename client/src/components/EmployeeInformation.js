@@ -15,16 +15,27 @@ function EmployeeInformation() {
       updateContextField(event);
   }
 
+  const handleNextClick = (event)=> {
+    event.preventDefault();
+    history.push("/physician-information")
+  }
+
+  const handleBackClick = (event)=> {
+    event.preventDefault();
+    history.goBack();
+  }
+
   return (
     <form>
-        <label>First Name<input onChange={handleInput} type="text" name="firstName" /></label>
-        <label>Middle Name<input onChange={handleInput} type="text" name="middleName" /></label>
-        <label>Last Name<input onChange={handleInput} type="text" name="lastName" /></label>
-        <label>Date of Injury Name<input onChange={handleInput} type="date" name="dateOfInjury" /></label>
-        <label>Date of Birth<input onChange={handleInput} type="date" name="dateOfBirth" /></label>
-        <label>Claim Number<input onChange={handleInput} type="number" name="claimNumber" /></label>
-        <label>Employer<input onChange={handleInput} type="text" name="employer" /></label>
-        <input type="submit" value="Submit" />
+        <label>First Name<input onChange={handleInput} type="text" name="employee_firstName" /></label>
+        <label>Middle Name<input onChange={handleInput} type="text" name="employee_middleName" /></label>
+        <label>Last Name<input onChange={handleInput} type="text" name="employee_lastName" /></label>
+        <label>Date of Injury Name<input onChange={handleInput} type="date" name="employee_dateOfInjury" /></label>
+        <label>Date of Birth<input onChange={handleInput} type="date" name="employee_dateOfBirth" /></label>
+        <label>Claim Number<input onChange={handleInput} type="number" name="employee_claimNumber" /></label>
+        <label>Employer<input onChange={handleInput} type="text" name="employee_employer" /></label>
+        <Button onClick={handleBackClick} type="submit" value="back">Back</Button>
+        <Button onClick={handleNextClick} type="submit" value="next">Next</Button>
     </form>
   )}
 

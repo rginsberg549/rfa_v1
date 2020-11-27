@@ -54,7 +54,7 @@ function App() {
     setState({ ...state, [name]: value });
   }
 
-  const updateTreatmentPlan = (treatment) => {
+  const updateRequestedTreatments = (treatment) => {
     setState({ ...state, requestedTreatments: {
       ...state.requestedTreatments, treatment
 
@@ -63,7 +63,7 @@ function App() {
 
   return (
     <div className="container">
-      <FormObject.Provider value={{ state, updateContextField, updateTreatmentPlan }}>
+      <FormObject.Provider value={{ state, updateContextField, updateRequestedTreatments}}>
         <Router>
           <Switch>
             <Route exact path="/" component={Nav} />

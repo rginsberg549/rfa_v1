@@ -8,11 +8,12 @@ function TreatmentRow() {
 
 
   const [treatmentsState, setTreatments] = useState([]);
+  
   const [selectedDiagnosisState, setSelectedDiagnosis] = useState("");
   const [selectedTreatmentsState, setSelectedTreatment] = useState("");
   const [treatmentNotesState, setTreatmentNotes] = useState("");
 
-  const { updateContextField, updateTreatmentPlan } = useContext(FormObject);
+  const { updateRequestedTreatments } = useContext(FormObject);
 
   const handleDiagnosisChange = (event)=> {
       event.preventDefault();

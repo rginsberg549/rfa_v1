@@ -37,7 +37,7 @@ const FormObject = createContext({
     "AdditionalNotes": ["Notes 1"]}
   ],
   updateContextField: () => {},
-  updateTreatmentPlan: () => {},
+  updateRequestedTreatments: () => {},
 });
 
 export default FormObject;

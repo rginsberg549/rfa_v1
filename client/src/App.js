@@ -5,6 +5,7 @@ import RequestType from "./components/RequestType";
 import EmployeeInformation from "./components/EmployeeInformation";
 import PhysicianInformation from "./components/PhysicianInformation";
 import ClaimsAdministratorInformation from "./components/ClaimsAdministratorInformation";
+import RequestTreatments from "./components/RequestTeatments"
 import FormObject from "./utils/FormContext";
 import "./App.css";
 
@@ -43,6 +44,7 @@ function App() {
       claims_phoneNumber: "",
       claims_faxNumber: "",
       claims_physicianEmail: "",
+      requestedTreatments: [],
     });
   }, []);
 
@@ -52,9 +54,16 @@ function App() {
     setState({ ...state, [name]: value });
   }
 
+  const updateTreatmentPlan = (treatment) => {
+    setState({ ...state, requestedTreatments: {
+      ...state.requestedTreatments, treatment
+
+    } });
+  }
+
   return (
     <div className="container">
-      <FormObject.Provider value={{ state, updateContextField }}>
+      <FormObject.Provider value={{ state, updateContextField, updateTreatmentPlan }}>
         <Router>
           <Switch>
             <Route exact path="/" component={Nav} />
@@ -73,6 +82,10 @@ function App() {
 
             <Route exact path="/claims-administrator-information">
               <ClaimsAdministratorInformation/>
+            </Route>
+
+            <Route exact path="/request-treatments">
+              <RequestTreatments/>
             </Route>
 
           </Switch>

@@ -30,7 +30,14 @@ const FormObject = createContext({
   claims_phoneNumber: "",
   claims_faxNumber: "",
   claims_physicianEmail: "",
+  requestedTreatments: [
+    {
+    "SelectedDiagnosis": "Selected diagnosis value",
+    "SelectedTreatments": ["Treatment 1"], 
+    "AdditionalNotes": ["Notes 1"]}
+  ],
   updateContextField: () => {},
+  updateTreatmentPlan: () => {},
 });
 
 export default FormObject;

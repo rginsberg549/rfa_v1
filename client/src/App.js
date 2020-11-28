@@ -55,6 +55,7 @@ function App() {
   }
 
   const updateRequestedTreatments = (treatment) => {
+    console.log(treatment);
     setState({ ...state, requestedTreatments: {
       ...state.requestedTreatments, treatment
 

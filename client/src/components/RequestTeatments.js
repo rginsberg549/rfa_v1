@@ -3,13 +3,14 @@ import { Button, MenuItem } from '@material-ui/core';
 import FormObject from "../utils/FormContext";
 import { useHistory } from 'react-router-dom';
 import TreatmentRow from "../components/TreatmentRow";
+import selectedDiagnosisState from "../components/TreatmentRow";
 
 
 function RequestTreatments() {
 
   let history = useHistory();
 
-  const [treatmentRowState, setTreatmentRow] = useState({components: [<TreatmentRow></TreatmentRow>]})
+  const [treatmentRowState, setTreatmentRow] = useState({components: []})
 
   const { updateRequestedTreatments } = useContext(FormObject);
 
@@ -24,13 +25,10 @@ function RequestTreatments() {
     history.goBack();
   }
 
-  const renderTreatmentRow = (event) => {
-    console.log(event)
-
-
-    const newComponents = [...treatmentRowState.components, <TreatmentRow/>];
+  const renderTreatmentRow = () => {
+    const newTreatmentRow = [...treatmentRowState.components, <TreatmentRow/>];
     setTreatmentRow({
-      components: newComponents
+      components: newTreatmentRow
     });
   }
 
@@ -38,8 +36,7 @@ function RequestTreatments() {
   
   return (
     <div>
-      {treatmentRowState.components.map(()=>
-            <TreatmentRow></TreatmentRow>)}
+      {treatmentRowState.components.map((i) => <TreatmentRow key={i} ></TreatmentRow>)}
       <Button onClick={renderTreatmentRow.bind(this)}>Add Another Treatment</Button>
       <Button onClick={handleBackClick} type="submit" value="back">Back</Button>
       <Button onClick={handleNextClick} type="submit" value="next">Next</Button>

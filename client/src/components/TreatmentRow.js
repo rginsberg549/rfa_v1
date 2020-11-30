@@ -5,7 +5,7 @@ import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
 
 function TreatmentRow(treatmentRowState) {
-  console.log(treatmentRowState);
+  console.log(treatmentRowState[0]);
 
   const [treatmentsState, setTreatments] = useState([]);
 

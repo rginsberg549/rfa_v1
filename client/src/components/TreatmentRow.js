@@ -1,46 +1,69 @@
-
-import React, { useContext, useState } from "react";
-import FormObject from "../utils/FormContext";
+import React, { useState } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
-import SelectDiagnosis from "../components/SelectDiagnosis";
 import SelectTreatment from "../components/SelectTreatment";
 import Notes from "../components/Notes";
 import DeleteTreatmentRow from "./DeleteTreatmentRow";
-import RequestTreatments from "../components/RequestTeatments";
-import { MenuItem,  Select } from '@material-ui/core';
+import { MenuItem, Select, TextareaAutosize  } from "@material-ui/core";
 
 function TreatmentRow(props) {
-
-  const [diagnosisState, setDiagnosisState] = useState("");
   const [treatmentRowState, setTreatmentRowState] = useState({});
 
-  const handleDiagnosisChange = (event)=> {
+  const [diagnosisState, setDiagnosisState] = useState("");
+  const [treatmentState, setTreatmentState] = useState("");
+  const [noteState, setNoteState] = useState("");
+
+  const handleDiagnosisChange = (event) => {
     event.preventDefault();
     setDiagnosisState(event.target.value);
-    handleTreatmentRowChange({diagnosis: event.target.value});
-}
+    setTreatmentRowState({ diagnosis: event.target.value });
+  };
 
-  const handleTreatmentRowChange = (newValue)=> {
-    setTreatmentRowState({
-      ...treatmentRowState, ...newValue
-    })
-    props.updateTreatmentRow(treatmentRowState);
-  }
+  const handleTreatmentChange = (event) => {
+    event.preventDefault();
+    setTreatmentState(event.target.value);
+    setTreatmentRowState({ treatment: event.target.value });
+  };
+
+  const handleNoteChange = (event) => {
+    event.preventDefault();
+    setNoteState(event.target.value);
+    setTreatmentRowState({ note: event.target.value });
+  };
 
   const diagnosisList = getDiagnosis();
-  return ( 
+  const treatmentList = getTreatments(diagnosisState);
+
+  return (
     <form>
-        <div>
-          <label>Select A Diagnosis</label>
-          <Select onChange={handleDiagnosisChange} value={diagnosisState}>
-            {diagnosisList.map((item, i) =>
-            <MenuItem key={i} value={item}>{item}</MenuItem>)}
-            </Select>
+      <div>
+        <label>Select A Diagnosis</label>
+        <Select onChange={handleDiagnosisChange} value={diagnosisState}>
+          {diagnosisList.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
+
+      <div>
+        <label>Select A Treatment</label>
+        <Select onChange={handleTreatmentChange} value={treatmentState}>
+          {treatmentList.map((item, i) => (
+            <MenuItem key={i} value={item}>
+              {item}
+            </MenuItem>
+          ))}
+        </Select>
+      </div>
+
+      <div>
+        <label>Add Additional Notes</label>
+        <TextareaAutosize/>
     </div>
-        <SelectTreatment diagnosis={props.row.diagnosis} treatment={props.row.treatment}></SelectTreatment>
-        <Notes notes={props.row.notes}></Notes>
-        <DeleteTreatmentRow></DeleteTreatmentRow>
+    
+    <DeleteTreatmentRow></DeleteTreatmentRow>
     </form>
   );
 }

@@ -1,6 +1,5 @@
 import { TextareaAutosize } from '@material-ui/core';
 import React, { useState } from "react";
-import getDiagnosis from "../utils/getDiagnosis";
 
 function Notes(props) {
   return ( 

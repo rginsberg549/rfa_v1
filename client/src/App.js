@@ -54,12 +54,9 @@ function App() {
     setState({ ...state, [name]: value });
   }
 
-  const updateRequestedTreatments = (treatment) => {
-    console.log(treatment);
-    setState({ ...state, requestedTreatments: {
-      ...state.requestedTreatments, treatment
-
-    } });
+  const updateRequestedTreatments = (treatments) => {
+    console.log('treatments', treatments);
+    setState({ ...state, requestedTreatments: treatments});
   }
 
   return (

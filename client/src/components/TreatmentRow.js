@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
-import SelectTreatment from "../components/SelectTreatment";
-import Notes from "../components/Notes";
-import DeleteTreatmentRow from "./DeleteTreatmentRow";
-import { MenuItem, Select, TextareaAutosize  } from "@material-ui/core";
+import { MenuItem, Select, TextareaAutosize, Button} from "@material-ui/core";
 
 function TreatmentRow(props) {
-  const [treatmentRowState, setTreatmentRowState] = useState({});
+  const [treatmentRowState, setTreatmentRowState] = useState({id: props.rowKey});
 
   const [diagnosisState, setDiagnosisState] = useState("");
   const [treatmentState, setTreatmentState] = useState("");
@@ -17,21 +14,21 @@ function TreatmentRow(props) {
     event.preventDefault();
     setDiagnosisState(event.target.value);
     setTreatmentRowState({...treatmentRowState, ...{ diagnosis: event.target.value }});
-    props.updateTreatmentRow(treatmentRowState);
+    props.updateTreatmentRow({...treatmentRowState, ...{ diagnosis: event.target.value }});
   };
 
   const handleTreatmentChange = (event) => {
     event.preventDefault();
     setTreatmentState(event.target.value);
     setTreatmentRowState({...treatmentRowState, ...{ treatment: event.target.value }});
-    props.updateTreatmentRow(treatmentRowState);
+    props.updateTreatmentRow({...treatmentRowState, ...{ treatment: event.target.value }});
   };
 
   const handleNoteChange = (event) => {
     event.preventDefault();
     setNoteState(event.target.value);
     setTreatmentRowState({...treatmentRowState, ...{ note: event.target.value }});
-    props.updateTreatmentRow(treatmentRowState);
+    props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
   const diagnosisList = getDiagnosis();
@@ -63,10 +60,10 @@ function TreatmentRow(props) {
 
       <div>
         <label>Add Additional Notes</label>
-        <TextareaAutosize/>
+        <TextareaAutosize onChange={handleNoteChange}/>
     </div>
     
-    <DeleteTreatmentRow></DeleteTreatmentRow>
+    <Button onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</Button>
     </form>
   );
 }

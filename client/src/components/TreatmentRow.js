@@ -16,19 +16,22 @@ function TreatmentRow(props) {
   const handleDiagnosisChange = (event) => {
     event.preventDefault();
     setDiagnosisState(event.target.value);
-    setTreatmentRowState({ diagnosis: event.target.value });
+    setTreatmentRowState({...treatmentRowState, ...{ diagnosis: event.target.value }});
+    props.updateTreatmentRow(treatmentRowState);
   };
 
   const handleTreatmentChange = (event) => {
     event.preventDefault();
     setTreatmentState(event.target.value);
-    setTreatmentRowState({ treatment: event.target.value });
+    setTreatmentRowState({...treatmentRowState, ...{ treatment: event.target.value }});
+    props.updateTreatmentRow(treatmentRowState);
   };
 
   const handleNoteChange = (event) => {
     event.preventDefault();
     setNoteState(event.target.value);
-    setTreatmentRowState({ note: event.target.value });
+    setTreatmentRowState({...treatmentRowState, ...{ note: event.target.value }});
+    props.updateTreatmentRow(treatmentRowState);
   };
 
   const diagnosisList = getDiagnosis();

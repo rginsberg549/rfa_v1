@@ -8,17 +8,20 @@ import FormContext from "../utils/FormContext";
 function RequestTreatments() {
   let history = useHistory();
 
-  const [treatmentRowState, setTreatmentRow] = useState([{}]);
+  const [treatmentRowState, setAllTreatmentRows] = useState([{}]);
 
   const { requestedTreatments, updateRequestedTreatments } = useContext(FormContext);
 
   function updateTreatmentRow(treatment) {
-    setTreatmentRow([...treatmentRowState, treatment]);
+    setAllTreatmentRows([...treatmentRowState, treatment]);
   }
 
   const handleNextClick = (event)=> {
     event.preventDefault();
+    console.log(treatmentRowState);
     updateRequestedTreatments(treatmentRowState);
+    console.log(FormContext);
+
     history.push("/");
   }
 
@@ -35,7 +38,7 @@ function RequestTreatments() {
         treatment: "",
         notes: "",
       }]
-    setTreatmentRow(newTreatmentRow);
+    setAllTreatmentRows(newTreatmentRow);
   }
 
 

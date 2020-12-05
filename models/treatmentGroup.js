@@ -1,9 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
     const TreatmentGroup = sequelize.define("TreatmentGroup", {
-      id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-      },
       notes: {
         type: DataTypes.STRING,
       },

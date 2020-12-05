@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     const Employee = sequelize.define("Employee", {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-    },
     firstName: {
         type: DataTypes.STRING
     },

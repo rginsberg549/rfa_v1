@@ -1,9 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
   const Requirements = sequelize.define("Requirements", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-    },
     requirement: {
       type: DataTypes.STRING,
     },

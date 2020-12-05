@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     const claimsAdmin = sequelize.define("ClaimsAdmin", {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-    },
     companyName: {
         type: DataTypes.STRING
     },

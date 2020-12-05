@@ -1,9 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     const Physician = sequelize.define("Physician", {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-    },
     name: {
         type: DataTypes.STRING
     },

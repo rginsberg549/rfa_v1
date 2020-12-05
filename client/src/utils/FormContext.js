@@ -1,15 +1,5 @@
 import React, { createContext } from "react";
 
-const FormObject = createContext({
-  // requestType: "",
-  // firstName: "",
-  // middleName: "",
-  // lastName: "",
-  // dateOfInjury: "",
-  // dateOfBirth: "",
-  // claimNumber: "",
-  // employer: "ghghhg",
-  // updateContextField: () => {}
-});
+const FormObject = createContext({})
 
 export default FormObject;

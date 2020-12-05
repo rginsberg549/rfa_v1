@@ -1,26 +1,35 @@
-module.exports = function(sequelize, DataTypes) {
-    const Employee = sequelize.define("Employee", {
+module.exports = function (sequelize, DataTypes) {
+  const Employee = sequelize.define("Employee", {
     firstName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     lastName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     middleName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     dateOfInjury: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     dateOfBirth: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     claimNumber: {
-        type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     employer: {
-        type: DataTypes.STRING
-    }})
-    
-    return Employee;
-}
+      type: DataTypes.STRING,
+    },
+  });
+
+  Employee.associate = function (models) {
+    Employee.belongsTo(models.CompletedRequests, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+
+  return Employee;
+};

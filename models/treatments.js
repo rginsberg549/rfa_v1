@@ -7,6 +7,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
   });
+  
   Treatments.associate = function (models) {
     Treatments.belongsTo(models.Diagnosis, {
       foreignKey: {
@@ -21,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
     });
-  }
+  };
 
   Treatments.associate = function (models) {
     Treatments.belongsTo(models.TreatmentGroup, {

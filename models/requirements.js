@@ -12,9 +12,7 @@ module.exports = function (sequelize, DataTypes) {
   };
 
   Requirements.associate = function (models) {
-    Requirements.hasOne(models.Treatments, {
-      onDelete: "cascade",
-    });
+    Requirements.hasOne(models.Treatments);
   };
 
   return Requirements;

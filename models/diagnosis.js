@@ -9,9 +9,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   Diagnosis.associate = function (models) {
-    Diagnosis.hasOne(models.Treatments, {
-      onDelete: "cascade",
-    });
+    Diagnosis.hasOne(models.Treatments);
   };
 
   Diagnosis.associate = function (models) {
@@ -20,15 +18,14 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: false,
       },
     });
-  }
-  
+  };
+
   Diagnosis.associate = function (models) {
-      Diagnosis.belongsTo(models.TreatmentGroup, {
-        foreignKey: {
-          allowNull: false,
-        },
-      }
-    );
-  }
+    Diagnosis.belongsTo(models.TreatmentGroup, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
   return Diagnosis;
 };

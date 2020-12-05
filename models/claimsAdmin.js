@@ -1,32 +1,40 @@
-module.exports = function(sequelize, DataTypes) {
-    const claimsAdmin = sequelize.define("ClaimsAdmin", {
+module.exports = function (sequelize, DataTypes) {
+  const ClaimsAdmin = sequelize.define("ClaimsAdmin", {
     companyName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     contactName: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     address: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     city: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     state: {
-        type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
     },
     zipCode: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     phoneNumber: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     faxNumber: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     emailAddress: {
-        type: DataTypes.STRING
-    }
-})
-    return claimsAdmin;
-}
+      type: DataTypes.STRING,
+    },
+  });
+
+  ClaimsAdmin.associate = function (models) {
+    ClaimsAdmin.belongsTo(models.CompletedRequests, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+  return ClaimsAdmin;
+};

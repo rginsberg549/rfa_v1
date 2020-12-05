@@ -50,7 +50,7 @@ function App() {
 
   const updateContextField = (event) => {
     const { name, value } = event.target;
-    console.log(state);
+    console.log("Current State", state);
     setState({ ...state, [name]: value });
   }
 

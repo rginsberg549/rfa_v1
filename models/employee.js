@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     claimNumber: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     employer: {
       type: DataTypes.STRING,
@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
   Employee.associate = function (models) {
     Employee.belongsTo(models.CompletedRequests, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
       },
     });
   };

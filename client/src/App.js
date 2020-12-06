@@ -7,6 +7,7 @@ import PhysicianInformation from "./components/PhysicianInformation";
 import ClaimsAdministratorInformation from "./components/ClaimsAdministratorInformation";
 import RequestTreatments from "./components/RequestTeatments";
 import UploadSupportingDocuments from "./components/UploadSupportingDocuments";
+import ReviewRequest from "./components/ReviewRequest";
 import FormObject from "./utils/FormContext";
 import "./App.css";
 
@@ -92,7 +93,7 @@ function App() {
             </Route>
 
             <Route exact path="/review-request">
-
+              <ReviewRequest/>
             </Route>
 
           </Switch>

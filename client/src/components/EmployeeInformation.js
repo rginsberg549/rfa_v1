@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Button, Input } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import FormObject from "../utils/FormContext";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 function EmployeeInformation() {
   let history = useHistory();

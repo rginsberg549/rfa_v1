@@ -41,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
   Physician.associate = function (models) {
     Physician.belongsTo(models.CompletedRequests, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
       },
     });
   };

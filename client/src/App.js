@@ -4,10 +4,10 @@ import Nav from "./components/Nav";
 import RequestType from "./components/RequestType";
 import EmployeeInformation from "./components/EmployeeInformation";
 import PhysicianInformation from "./components/PhysicianInformation";
-import ClaimsAdministratorInformation from "./components/ClaimsAdministratorInformation";
+import ClaimsAdministratorInformation from "./components/ClaimsAdminInformation";
 import RequestTreatments from "./components/RequestTeatments";
 import UploadSupportingDocuments from "./components/UploadSupportingDocuments";
-import ReviewRequest from "./components/ReviewRequest";
+import SaveRequest from "./components/SaveRequest";
 import FormObject from "./utils/FormContext";
 import "./App.css";
 
@@ -47,6 +47,7 @@ function App() {
       claims_faxNumber: "",
       claims_email: "",
       requestedTreatments: [],
+      supportingDocuments: []
     });
   }, []);
 
@@ -61,9 +62,14 @@ function App() {
     setState({ ...state, requestedTreatments: treatments});
   }
 
+  const updateSupportingDocuments = (documents) => {
+    console.log('documents', documents);
+    setState({ ...state, supportingDocuments: documents});
+  }
+
   return (
     <div className="container">
-      <FormObject.Provider value={{ state, updateContextField, updateRequestedTreatments}}>
+      <FormObject.Provider value={{ state, updateContextField, updateRequestedTreatments, updateSupportingDocuments}}>
         <Router>
           <Switch>
             <Route exact path="/" component={Nav} />
@@ -92,8 +98,13 @@ function App() {
               <UploadSupportingDocuments/>
             </Route>
 
-            <Route exact path="/review-request">
-              <ReviewRequest/>
+            <Route exact path="/save-request">
+              <SaveRequest/>
+            </Route>
+
+            <Route exact path="/completed-requests">
+
+            
             </Route>
 
           </Switch>

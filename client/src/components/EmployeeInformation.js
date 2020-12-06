@@ -88,7 +88,7 @@ function EmployeeInformation() {
         <input
           value={employee_claimNumber}
           onChange={handleInput}
-          type="number"
+          type="text"
           name="employee_claimNumber"
         />
       </label>

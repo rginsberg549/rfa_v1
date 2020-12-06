@@ -13,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     state: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     zipCode: {
       type: DataTypes.STRING,
@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
   ClaimsAdmin.associate = function (models) {
     ClaimsAdmin.belongsTo(models.CompletedRequests, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
       },
     });
   };

@@ -1,42 +1,71 @@
-import React, { useContext } from "react";
-import { Button, Input } from "@material-ui/core";
-import FormObject from "../utils/FormContext";
-import { useHistory } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import FileRow from "../components/FileRow";
+import FormContext from "../utils/FormContext";
 
-function ClaimsAdministratorInformation() {
+
+function UploadSupportingDocuments() {
   let history = useHistory();
 
-  const { updateContextField } = useContext(FormObject);
+  const [fileRowState, setAllFileRows] = useState([{id: 0}]);
 
-  const handleInput = (event) => {
+  const { updateSupportingDocuments } = useContext(FormContext);
+
+  function updateFileRow(fileNew) {
+    const arr = fileRowState.map(elem => {
+      
+      if (elem.id === fileNew.id) {
+        return {
+          ...elem,
+          ...fileNew
+        }
+      } else {
+        return elem
+      }
+    })
+    setAllFileRows(arr);
+  }
+
+  const handleNextClick = (event)=> {
     event.preventDefault();
-    updateContextField(event);
-  };
+    updateSupportingDocuments(fileRowState);
+    history.push("/save-request");
+  }
 
-  const handleNextClick = (event) => {
-    event.preventDefault();
-    history.push("/review-request");
-  };
-
-  const handleBackClick = (event) => {
+  const handleBackClick = (event)=> {
     event.preventDefault();
     history.goBack();
-  };
+  }
+
+  
+  const renderTreatmentRow = () => {
+    const newFileRow = [...fileRowState, 
+      {
+        id: fileRowState.length,
+      }]
+    setAllFileRows(newFileRow);
+  }
+  const deleteFileRow = (id) => {
+    const arr = fileRowState.filter(elem => elem.id !== id)
+    setAllFileRows(arr)
+  }
+
 
   return (
-    <form>
-      <Button variant="contained" component="label">
-        Upload File
-        <input type="file" hidden />
-      </Button>
-      <Button onClick={handleBackClick} type="submit" value="back">
-        Back
-      </Button>
-      <Button onClick={handleNextClick} type="submit" value="next">
-        Next
-      </Button>
-    </form>
-  );
+    <div>
+      {fileRowState.map((item,i) => <FileRow 
+      key={i}
+      rowKey={i}
+      row={item}
+      index={i} 
+      updateFileRow={updateFileRow}
+      deleteFileRow={deleteFileRow}> </FileRow>)}
+      <Button onClick={renderTreatmentRow}>Add Another File</Button>
+      <Button onClick={handleBackClick} type="submit" value="back">Back</Button>
+      <Button onClick={handleNextClick} type="submit" value="next">Next</Button>
+    </div> 
+  )
 }
 
-export default ClaimsAdministratorInformation;
+export default UploadSupportingDocuments;

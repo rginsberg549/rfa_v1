@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
+import getRequirements from "../utils/getRequirements"
 import { MenuItem, Select, TextareaAutosize, Button} from "@material-ui/core";
 
 function TreatmentRow(props) {
@@ -33,6 +34,7 @@ function TreatmentRow(props) {
 
   const diagnosisList = getDiagnosis();
   const treatmentList = getTreatments(diagnosisState);
+  const requirementList = getRequirements(diagnosisState, treatmentState);
 
   return (
     <form>
@@ -61,6 +63,12 @@ function TreatmentRow(props) {
       <div>
         <label>Add Additional Notes</label>
         <TextareaAutosize onChange={handleNoteChange}/>
+    </div>
+
+    <div>
+      <label>Requirements for Selected Diagnosis and Seletected Treatment</label>
+      {requirementList.map((item, i) => (
+            <li key={i} value={item}>{item} </li>))}
     </div>
     
     <Button onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</Button>

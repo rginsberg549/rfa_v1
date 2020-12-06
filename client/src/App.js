@@ -5,7 +5,8 @@ import RequestType from "./components/RequestType";
 import EmployeeInformation from "./components/EmployeeInformation";
 import PhysicianInformation from "./components/PhysicianInformation";
 import ClaimsAdministratorInformation from "./components/ClaimsAdministratorInformation";
-import RequestTreatments from "./components/RequestTeatments"
+import RequestTreatments from "./components/RequestTeatments";
+import UploadSupportingDocuments from "./components/UploadSupportingDocuments";
 import FormObject from "./utils/FormContext";
 import "./App.css";
 
@@ -43,7 +44,7 @@ function App() {
       claims_zipcode: "",
       claims_phoneNumber: "",
       claims_faxNumber: "",
-      claims_physicianEmail: "",
+      claims_email: "",
       requestedTreatments: [],
     });
   }, []);
@@ -84,6 +85,14 @@ function App() {
 
             <Route exact path="/request-treatments">
               <RequestTreatments/>
+            </Route>
+
+            <Route exact path="/upload-supporting-documents">
+              <UploadSupportingDocuments/>
+            </Route>
+
+            <Route exact path="/review-request">
+
             </Route>
 
           </Switch>

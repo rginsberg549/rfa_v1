@@ -1,5 +1,38 @@
-import React, { createContext } from "react";
+import { createContext } from "react";
 
-const FormObject = createContext({})
+const FormObject = createContext({
+  requestType: "",
+  employee_firstName: "",
+  employee_middleName: "",
+  employee_lastName: "",
+  employee_dateOfInjury: "",
+  employee_dateOfBirth: "",
+  employee_claimNumber: "",
+  employee_employer: "",
+  physician_physicianName: "",
+  physician_practiceName: "",
+  physician_contactName: "",
+  physician_address: "",
+  physician_city: "",
+  physician_state: "",
+  physician_zipcode: "",
+  physician_phoneNumber: "",
+  physician_faxNumber: "",
+  physician_specialty: "",
+  physician_npiNumber: "",
+  physician_email: "",
+  claims_companyName: "",
+  claims_contactName: "",
+  claims_address: "",
+  claims_city: "",
+  claims_state: "",
+  claims_zipcode: "",
+  claims_phoneNumber: "",
+  claims_faxNumber: "",
+  claims_email: "",
+  requestedTreatments: [],
+  updateContextField: () => {},
+  updateRequestedTreatments: () => {},
+});
 
 export default FormObject;

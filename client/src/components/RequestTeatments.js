@@ -30,7 +30,7 @@ function RequestTreatments() {
   const handleNextClick = (event)=> {
     event.preventDefault();
     updateRequestedTreatments(treatmentRowState);
-    history.push("/");
+    history.push("/upload-supporting-documents");
   }
 
   const handleBackClick = (event)=> {

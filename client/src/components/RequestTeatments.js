@@ -65,8 +65,8 @@ function RequestTreatments() {
       updateTreatmentRow={updateTreatmentRow}
       deleteTreatmentRow={deleteTreatmentRow}> </TreatmentRow>)}
       <Button onClick={renderTreatmentRow}>Add Another Treatment</Button>
-      <Button onClick={handleBackClick} type="submit" value="back">Back</Button>
-      <Button onClick={handleNextClick} type="submit" value="next">Next</Button>
+      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">Back</Button>
+      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">Next</Button>
     </div> 
   )
 }

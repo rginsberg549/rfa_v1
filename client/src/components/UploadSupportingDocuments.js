@@ -30,7 +30,7 @@ function UploadSupportingDocuments() {
   const handleNextClick = (event)=> {
     event.preventDefault();
     updateSupportingDocuments(fileRowState);
-    history.push("/save-request");
+    history.push("/view-request");
   }
 
   const handleBackClick = (event)=> {

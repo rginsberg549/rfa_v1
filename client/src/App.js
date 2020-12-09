@@ -7,6 +7,7 @@ import PhysicianInformation from "./components/PhysicianInformation";
 import ClaimsAdministratorInformation from "./components/ClaimsAdminInformation";
 import RequestTreatments from "./components/RequestTeatments";
 import UploadSupportingDocuments from "./components/UploadSupportingDocuments";
+import ViewRequest from "./components/ViewRequest";
 import SaveRequest from "./components/SaveRequest";
 import FormObject from "./utils/FormContext";
 import "./App.css";
@@ -98,13 +99,12 @@ function App() {
               <UploadSupportingDocuments/>
             </Route>
 
-            <Route exact path="/save-request">
-              <SaveRequest/>
+            <Route exact path="/view-request">
+              <ViewRequest/>
             </Route>
 
             <Route exact path="/completed-requests">
 
-            
             </Route>
 
           </Switch>

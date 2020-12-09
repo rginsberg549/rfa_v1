@@ -1,7 +1,7 @@
 var db = require("../../models");
 const router = require("express").Router();
 
-router.post("/physician/", function (req, res) {
+router.post("/", function (req, res) {
   db.Physician.create({
       name: req.body.name,
       practiceName: req.body.practiceName,

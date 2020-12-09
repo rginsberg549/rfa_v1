@@ -54,6 +54,9 @@ function SaveRequest() {
   }
 
   function save() {
+
+    console.log("State", employee_firstName);
+
     axios
       .post("/api/employee", {
         firstName: employee_firstName,
@@ -81,7 +84,7 @@ function SaveRequest() {
             email: physician_email,
           })
           .then(
-            axios.post("/api/claims-administrator", {
+            axios.post("/api/claims-admin", {
               companyName: claims_companyName,
               contactName: claims_contactName,
               address: claims_address,
@@ -91,7 +94,10 @@ function SaveRequest() {
               phoneNumber: claims_phoneNumber,
               faxNumber: claims_faxNumber,
               email: claims_email,
-            })
+            }).then(()=> {
+              history.push("/all-requests");
+            }   
+            )
           )
       );
   }
@@ -99,12 +105,6 @@ function SaveRequest() {
   return (
   <div>
     <Button onClick={save}>Save Request</Button>
-    <Button onClick={handleBackClick} type="submit" value="back">
-      Back
-    </Button>
-    <Button onClick={handleNextClick} type="submit" value="next">
-      Next
-    </Button>
   </div>);
 }
 

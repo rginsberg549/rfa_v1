@@ -101,10 +101,10 @@ function EmployeeInformation() {
           name="employee_employer"
         />
       </label>
-      <Button onClick={handleBackClick} type="submit" value="back">
+      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">
         Back
       </Button>
-      <Button onClick={handleNextClick} type="submit" value="next">
+      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">
         Next
       </Button>
     </form>

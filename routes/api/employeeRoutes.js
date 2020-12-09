@@ -1,16 +1,16 @@
 var db = require("../../models");
 const router = require("express").Router();
 
-router.post("/employee/", function (req, res) {
-  console.log("In Post Route");
+router.post("/", function (req, res) {
+  console.log("In Post Route", req.body);
   db.Employee.create({
-    firstName: req.body.employee_firstName,
-    lastName: req.body.employee_lastName,
-    middleName: req.body.employee_middleName,
-    dateOfInjury: req.body.employee_dateOfInjury,
-    dateOfBirth: req.body.employee_dateOfBirth,
-    claimNumber: req.body.employee_claimNumber,
-    employer: req.body.employee_employer,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    middleName: req.body.middleName,
+    dateOfInjury: req.body.dateOfInjury,
+    dateOfBirth: req.body.dateOfBirth,
+    claimNumber: req.body.claimNumber,
+    employer: req.body.employer,
   }).then(function (employeePost) {
     res.json(employeePost);
   });

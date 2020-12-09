@@ -7,13 +7,15 @@ import FormContext from "../utils/FormContext";
 function RequestTreatments() {
   let history = useHistory();
 
-  const [treatmentRowState, setAllTreatmentRows] = useState([{ id: 0 }]);
+  const [treatmentRowState, setAllTreatmentRows] = useState([]);
 
   const { updateRequestedTreatments, state: {requestedTreatments} } = useContext(FormContext);
 
   useEffect(()=> {
     if (requestedTreatments && requestedTreatments.length > 0) {
       setAllTreatmentRows(requestedTreatments);
+    } else {
+      setAllTreatmentRows([{ id: 0 }])
     }
     console.log(requestedTreatments);
   }, [requestedTreatments]);

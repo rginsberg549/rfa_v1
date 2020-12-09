@@ -1,74 +1,99 @@
-import React, { useState, useContext } from "react";
-import { Button } from '@material-ui/core';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from "react";
+import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import TreatmentRow from "../components/TreatmentRow";
 import FormContext from "../utils/FormContext";
-
 
 function RequestTreatments() {
   let history = useHistory();
 
-  const [treatmentRowState, setAllTreatmentRows] = useState([{id: 0}]);
+  const [treatmentRowState, setAllTreatmentRows] = useState([{ id: 0 }]);
 
-  const { updateRequestedTreatments } = useContext(FormContext);
+  const { updateRequestedTreatments, state: {requestedTreatments} } = useContext(FormContext);
+
+  useEffect(()=> {
+    if (requestedTreatments && requestedTreatments.length > 0) {
+      setAllTreatmentRows(requestedTreatments);
+    }
+    console.log(requestedTreatments);
+  }, [requestedTreatments]);
 
   function updateTreatmentRow(treatmentNew) {
-    const arr = treatmentRowState.map(elem => {
-      
+    console.log(treatmentRowState);
+    const arr = treatmentRowState.map((elem) => {
       if (elem.id === treatmentNew.id) {
         return {
           ...elem,
-          ...treatmentNew
-        }
+          ...treatmentNew,
+        };
       } else {
-        return elem
+        return elem;
       }
-    })
+    });
     setAllTreatmentRows(arr);
   }
 
-  const handleNextClick = (event)=> {
+  const handleNextClick = (event) => {
     event.preventDefault();
     updateRequestedTreatments(treatmentRowState);
     history.push("/upload-supporting-documents");
-  }
+  };
 
-  const handleBackClick = (event)=> {
+  const handleBackClick = (event) => {
     event.preventDefault();
     history.goBack();
-  }
+  };
 
-  
   const renderTreatmentRow = () => {
-    const newTreatmentRow = [...treatmentRowState, 
+    const newTreatmentRow = [
+      ...treatmentRowState,
       {
         id: treatmentRowState.length,
         diagnosis: "",
         treatment: "",
         note: "",
-      }]
+      },
+    ];
     setAllTreatmentRows(newTreatmentRow);
-  }
+  };
   const deleteTreatmentRow = (id) => {
-    const arr = treatmentRowState.filter(elem => elem.id !== id)
-    setAllTreatmentRows(arr)
-  }
-
+    const arr = treatmentRowState.filter((elem) => elem.id !== id);
+    setAllTreatmentRows(arr);
+  };
 
   return (
     <div>
-      {treatmentRowState.map((item,i) => <TreatmentRow 
-      key={i}
-      rowKey={i}
-      row={item}
-      index={i} 
-      updateTreatmentRow={updateTreatmentRow}
-      deleteTreatmentRow={deleteTreatmentRow}> </TreatmentRow>)}
+      {treatmentRowState.map((item, i) => (
+        <TreatmentRow
+          key={i}
+          rowKey={item.id}
+          row={item}
+          index={i}
+          updateTreatmentRow={updateTreatmentRow}
+          deleteTreatmentRow={deleteTreatmentRow}
+        >
+          {" "}
+        </TreatmentRow>
+      ))}
       <Button onClick={renderTreatmentRow}>Add Another Treatment</Button>
-      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">Back</Button>
-      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">Next</Button>
-    </div> 
-  )
+      <Button
+        onClick={handleBackClick}
+        type="submit"
+        value="back"
+        class="back-button"
+      >
+        Back
+      </Button>
+      <Button
+        onClick={handleNextClick}
+        type="submit"
+        value="next"
+        class="next-button"
+      >
+        Next
+      </Button>
+    </div>
+  );
 }
 
 export default RequestTreatments;

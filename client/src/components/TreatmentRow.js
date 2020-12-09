@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
 import getRequirements from "../utils/getRequirements"
@@ -10,6 +10,16 @@ function TreatmentRow(props) {
   const [diagnosisState, setDiagnosisState] = useState("");
   const [treatmentState, setTreatmentState] = useState("");
   const [noteState, setNoteState] = useState("");
+
+  console.log(props.row);
+  
+  useEffect(()=> {
+    if (props.row) {
+      setDiagnosisState(props.row.diagnosis);
+      setTreatmentState(props.row.treatment);
+      setNoteState(props.row.note);
+    }
+  }, []);
 
   const handleDiagnosisChange = (event) => {
     event.preventDefault();

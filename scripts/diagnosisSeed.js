@@ -1,3 +1,4 @@
+USE RFA;
 INSERT INTO Diagnoses (code, diagnosis, createdAt, updatedAt) VALUES ('A00.0', 'Cholera due to Vibrio cholerae 01, biovar cholerae', NOW(), NOW());
 INSERT INTO Diagnoses (code, diagnosis, createdAt, updatedAt) VALUES ('A00.1', 'Cholera due to Vibrio cholerae 01, biovar eltor', NOW(), NOW());
 INSERT INTO Diagnoses (code, diagnosis, createdAt, updatedAt) VALUES ('A00.9', 'Cholera, unspecified', NOW(), NOW());

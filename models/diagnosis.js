@@ -8,9 +8,5 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Diagnoses.associate = function (models) {
-    Diagnoses.hasOne(models.Treatments);
-  };
-
   return Diagnoses;
 };

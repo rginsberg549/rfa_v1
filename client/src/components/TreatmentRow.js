@@ -16,7 +16,6 @@ function TreatmentRow(props) {
 
   useEffect(()=> {
     getDiagnosisOptions();
-
     if (props.row) {
       setDiagnosisState(props.row.diagnosis);
       setTreatmentState(props.row.treatment);
@@ -25,7 +24,7 @@ function TreatmentRow(props) {
   }, []);
 
   const getDiagnosisOptions = async () => {
-    const data = await axios.get("/api/getDiagnoses");
+    const data = await getDiagnosis();
     let options = [];
     for (let index = 0; index < data.data.length; index++) {
       const element = data.data[index]
@@ -34,9 +33,21 @@ function TreatmentRow(props) {
     setDiagnosisOptions(options);
   };
 
+  const getTreatmentOptions = async (val) => {
+    const data = await axios.get("api/getTreatments/" + val)
+    console.log(data);
+    let options = [];
+    for (let index = 0; index < data.data.length; index++) {
+      const element = data.data[index];
+      options.push(element.treatment);
+
+    }
+    setTreatmentOptions(options);
+  }
 
   const handleDiagnosisChange = (event) => {
     event.preventDefault();
+    getTreatmentOptions(event.target.value);
     setDiagnosisState(event.target.value);
     setTreatmentRowState({...treatmentRowState, ...{ diagnosis: event.target.value }});
     props.updateTreatmentRow({...treatmentRowState, ...{ diagnosis: event.target.value }});
@@ -44,6 +55,7 @@ function TreatmentRow(props) {
 
   const handleTreatmentChange = (event) => {
     event.preventDefault();
+    getTreatmentOptions(diagnosisState);
     setTreatmentState(event.target.value);
     setTreatmentRowState({...treatmentRowState, ...{ treatment: event.target.value }});
     props.updateTreatmentRow({...treatmentRowState, ...{ treatment: event.target.value }});
@@ -56,8 +68,6 @@ function TreatmentRow(props) {
     props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
-
-  const treatmentList = getTreatments(diagnosisState);
   const requirementList = getRequirements(diagnosisState, treatmentState);
 
   return (
@@ -76,7 +86,7 @@ function TreatmentRow(props) {
       <div>
         <label>Select A Treatment</label>
         <Select onChange={handleTreatmentChange} value={treatmentState}>
-          {treatmentList.map((item, i) => (
+          {treatmentOptions.map((item, i) => (
             <MenuItem key={i} value={item}>
               {item}
             </MenuItem>

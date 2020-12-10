@@ -3,18 +3,11 @@ module.exports = function (sequelize, DataTypes) {
     treatment: {
       type: DataTypes.STRING,
     },
-    cptHCPCS: {
+    diagnosisCode: {
       type: DataTypes.STRING,
     },
   });
-  
-  Treatments.associate = function (models) {
-    Treatments.belongsTo(models.Diagnoses, {
-      foreignKey: {
-        allowNull: true,
-      },
-    });
-  };
+
   
   return Treatments;
 };

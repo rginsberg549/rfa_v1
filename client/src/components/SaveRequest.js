@@ -58,7 +58,7 @@ function SaveRequest() {
     console.log("State", );
 
     axios
-      .post("/api/employee", {
+      .post("/api/employees", {
         firstName: employee_firstName,
         middleName: employee_middleName,
         lastName: employee_lastName,
@@ -69,7 +69,7 @@ function SaveRequest() {
       })
       .then(
         axios
-          .post("/api/physician", {
+          .post("/api/physicians", {
             physicianName: physician_physicianName,
             practiceName: physician_practiceName,
             contactName: physician_contactName,
@@ -84,7 +84,7 @@ function SaveRequest() {
             emailAddress: physician_email,
           })
           .then(
-            axios.post("/api/claims-admin", {
+            axios.post("/api/claimAdmins", {
               companyName: claims_companyName,
               contactName: claims_contactName,
               address: claims_address,

@@ -2,7 +2,7 @@ var db = require("../../models");
 const router = require("express").Router();
 
 router.post("/", function (req, res) {
-  db.Physician.create({
+  db.Physicians.create({
       name: req.body.name,
       practiceName: req.body.practiceName,
       contactName: req.body.contactName,

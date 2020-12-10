@@ -9,28 +9,12 @@ module.exports = function (sequelize, DataTypes) {
   });
   
   Treatments.associate = function (models) {
-    Treatments.belongsTo(models.Diagnosis, {
+    Treatments.belongsTo(models.Diagnoses, {
       foreignKey: {
-        allowNull: false,
+        allowNull: true,
       },
     });
   };
-
-  Treatments.associate = function (models) {
-    Treatments.belongsTo(models.Requirements, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
-
-  Treatments.associate = function (models) {
-    Treatments.belongsTo(models.TreatmentGroup, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
-
+  
   return Treatments;
 };

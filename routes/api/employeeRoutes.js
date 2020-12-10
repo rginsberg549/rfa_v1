@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 router.post("/", function (req, res) {
   console.log("In Post Route", req.body);
-  db.Employee.create({
+  db.Employees.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     middleName: req.body.middleName,

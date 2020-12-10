@@ -5,15 +5,13 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Requirements.associate = function (models) {
-    Requirements.hasOne(models.Diagnosis, {
-      onDelete: "cascade",
-    });
-  };
+  // Requirements.associate = function (models) {
+  //   Requirements.hasOne(models.Diagnosis);
+  // };
 
-  Requirements.associate = function (models) {
-    Requirements.hasOne(models.Treatments);
-  };
+  // Requirements.associate = function (models) {
+  //   Requirements.hasOne(models.Treatments);
+  // };
 
   return Requirements;
 };

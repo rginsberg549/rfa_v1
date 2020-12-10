@@ -6,19 +6,15 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.Employee);
+    CompletedRequests.hasOne(models.Employees);
   };
 
   CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.Physician);
+    CompletedRequests.hasOne(models.Physicians);
   };
 
   CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.ClaimsAdmin);
-  };
-
-  CompletedRequests.associate = function (models) {
-    CompletedRequests.hasMany(models.TreatmentGroup);
+    CompletedRequests.hasOne(models.ClaimAdmins);
   };
 
   return CompletedRequests;

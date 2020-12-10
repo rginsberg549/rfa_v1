@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Physician = sequelize.define("Physician", {
+  const Physician = sequelize.define("Physicians", {
     physicianName: {
       type: DataTypes.STRING,
     },

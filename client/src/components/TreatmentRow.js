@@ -10,8 +10,6 @@ function TreatmentRow(props) {
   const [diagnosisState, setDiagnosisState] = useState("");
   const [treatmentState, setTreatmentState] = useState("");
   const [noteState, setNoteState] = useState("");
-
-  console.log(props.row);
   
   useEffect(()=> {
     if (props.row) {
@@ -42,7 +40,20 @@ function TreatmentRow(props) {
     props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
-  const diagnosisList = getDiagnosis();
+ async function getDiagnosisOptions(){
+    let diagnosisOptions = [];
+    let diagnosisObj = await getDiagnosis();
+    for (let index = 0; index < diagnosisObj.data.length; index++) {
+      const element = diagnosisObj.data[index].code;
+      diagnosisOptions.push(element);
+    }
+    console.log(diagnosisOptions);
+
+    return diagnosisOptions;
+  }
+
+
+  const diagnosisList = getDiagnosisOptions();
   const treatmentList = getTreatments(diagnosisState);
   const requirementList = getRequirements(diagnosisState, treatmentState);
 

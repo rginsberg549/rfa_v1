@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Diagnosis = sequelize.define("Diagnosis", {
+  const Diagnoses = sequelize.define("Diagnoses", {
     diagnosis: {
       type: DataTypes.STRING,
     },
@@ -8,24 +8,9 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Diagnosis.associate = function (models) {
-    Diagnosis.hasOne(models.Treatments);
+  Diagnoses.associate = function (models) {
+    Diagnoses.hasOne(models.Treatments);
   };
 
-  Diagnosis.associate = function (models) {
-    Diagnosis.belongsTo(models.Requirements, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
-
-  Diagnosis.associate = function (models) {
-    Diagnosis.belongsTo(models.TreatmentGroup, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
-  return Diagnosis;
+  return Diagnoses;
 };

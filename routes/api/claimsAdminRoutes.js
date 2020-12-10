@@ -2,9 +2,9 @@ var db = require("../../models");
 const router = require("express").Router();
 
 router.post("/", function (req, res) {
+  console.log("claims admin req.body", req.body);
   db.ClaimsAdmin.create({
-      name: req.body.name,
-      practiceName: req.body.practiceName,
+      companyName: req.body.companyName,
       contactName: req.body.contactName,
       address: req.body.address,
       city: req.body.city,
@@ -12,10 +12,7 @@ router.post("/", function (req, res) {
       zipCode: req.body.zipCode,
       phoneNumber: req.body.phoneNumber,
       faxNumber: req.body.faxNumber,
-      emailAddress: req.body.emailAddress,
-      specialty: req.body.specialty,
-      npiNumber: req.body.npiNumber,
-      
+      emailAddress: req.body.emailAddress,   
   }).then(function (claimsAdminPost) {
     res.json(claimsAdminPost);
   });

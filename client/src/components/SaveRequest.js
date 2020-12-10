@@ -55,7 +55,7 @@ function SaveRequest() {
 
   function save() {
 
-    console.log("State", employee_firstName);
+    console.log("State", );
 
     axios
       .post("/api/employee", {
@@ -71,17 +71,17 @@ function SaveRequest() {
         axios
           .post("/api/physician", {
             physicianName: physician_physicianName,
-            physicianName: physician_practiceName,
+            practiceName: physician_practiceName,
             contactName: physician_contactName,
             address: physician_address,
             city: physician_city,
             state: physician_state,
-            zipcode: physician_zipcode,
+            zipCode: physician_zipcode,
             phoneNumber: physician_phoneNumber,
             faxNumber: physician_faxNumber,
             specialty: physician_specialty,
             npiNumber: physician_npiNumber,
-            email: physician_email,
+            emailAddress: physician_email,
           })
           .then(
             axios.post("/api/claims-admin", {
@@ -90,10 +90,10 @@ function SaveRequest() {
               address: claims_address,
               city: claims_city,
               state: claims_state,
-              zipcode: claims_zipcode,
+              zipCode: claims_zipcode,
               phoneNumber: claims_phoneNumber,
               faxNumber: claims_faxNumber,
-              email: claims_email,
+              emailAddress: claims_email,
             }).then(()=> {
               history.push("/all-requests");
             }   

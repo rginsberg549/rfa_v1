@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
   const Physician = sequelize.define("Physician", {
-    name: {
+    physicianName: {
       type: DataTypes.STRING,
     },
     practiceName: {

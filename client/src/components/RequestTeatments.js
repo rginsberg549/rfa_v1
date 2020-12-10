@@ -17,11 +17,9 @@ function RequestTreatments() {
     } else {
       setAllTreatmentRows([{ id: 0 }])
     }
-    console.log(requestedTreatments);
   }, [requestedTreatments]);
 
   function updateTreatmentRow(treatmentNew) {
-    console.log(treatmentRowState);
     const arr = treatmentRowState.map((elem) => {
       if (elem.id === treatmentNew.id) {
         return {

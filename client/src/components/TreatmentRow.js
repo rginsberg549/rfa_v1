@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, componentDidMount } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
 import getTreatments from "../utils/getTreatments";
 import getRequirements from "../utils/getRequirements"
 import { MenuItem, Select, TextareaAutosize, Button} from "@material-ui/core";
+import axios from "axios";
 
 function TreatmentRow(props) {
   const [treatmentRowState, setTreatmentRowState] = useState({id: props.rowKey});
@@ -10,14 +11,29 @@ function TreatmentRow(props) {
   const [diagnosisState, setDiagnosisState] = useState("");
   const [treatmentState, setTreatmentState] = useState("");
   const [noteState, setNoteState] = useState("");
-  
+  const [diagnosisOptions, setDiagnosisOptions] = useState([]);
+  const [treatmentOptions, setTreatmentOptions] = useState([]);
+
   useEffect(()=> {
+    getDiagnosisOptions();
+
     if (props.row) {
       setDiagnosisState(props.row.diagnosis);
       setTreatmentState(props.row.treatment);
       setNoteState(props.row.note);
     }
   }, []);
+
+  const getDiagnosisOptions = async () => {
+    const data = await axios.get("/api/getDiagnoses");
+    let options = [];
+    for (let index = 0; index < data.data.length; index++) {
+      const element = data.data[index]
+      options.push(element.code);
+    }
+    setDiagnosisOptions(options);
+  };
+
 
   const handleDiagnosisChange = (event) => {
     event.preventDefault();
@@ -40,29 +56,16 @@ function TreatmentRow(props) {
     props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
- async function getDiagnosisOptions(){
-    let diagnosisOptions = [];
-    let diagnosisObj = await getDiagnosis();
-    for (let index = 0; index < diagnosisObj.data.length; index++) {
-      const element = diagnosisObj.data[index].code;
-      diagnosisOptions.push(element);
-    }
-    console.log(diagnosisOptions);
 
-    return diagnosisOptions;
-  }
-
-
-  const diagnosisList = getDiagnosisOptions();
   const treatmentList = getTreatments(diagnosisState);
   const requirementList = getRequirements(diagnosisState, treatmentState);
 
   return (
     <form>
       <div>
-        <label>Select A Diagnosis</label>
+        <label>Select A Diagnosis: </label>
         <Select onChange={handleDiagnosisChange} value={diagnosisState}>
-          {diagnosisList.map((item, i) => (
+          {diagnosisOptions.map((item, i) => (
             <MenuItem key={i} value={item}>
               {item}
             </MenuItem>

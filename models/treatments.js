@@ -1,9 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
   const Treatments = sequelize.define("Treatments", {
-    treatment: {
+    treatmentName: {
       type: DataTypes.STRING,
     },
-    diagnosisCode: {
+    diagnosisId: {
       type: DataTypes.STRING,
     },
   });

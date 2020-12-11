@@ -5,17 +5,17 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.Employees);
-  };
+  // CompletedRequests.associate = function (models) {
+  //   CompletedRequests.hasOne(models.Employees);
+  // };
 
-  CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.Physicians);
-  };
+  // CompletedRequests.associate = function (models) {
+  //   CompletedRequests.hasOne(models.Physicians);
+  // };
 
-  CompletedRequests.associate = function (models) {
-    CompletedRequests.hasOne(models.ClaimAdmins);
-  };
+  // CompletedRequests.associate = function (models) {
+  //   CompletedRequests.hasOne(models.ClaimAdmins);
+  // };
 
   return CompletedRequests;
 };

@@ -12,6 +12,8 @@ function RequestTreatments() {
   const { updateRequestedTreatments, state: {requestedTreatments} } = useContext(FormContext);
 
   useEffect(()=> {
+    console.log("runnning use effect");
+    console.log("requestedTreatments", requestedTreatments);
     if (requestedTreatments && requestedTreatments.length > 0) {
       setAllTreatmentRows(requestedTreatments);
     } else {
@@ -30,13 +32,14 @@ function RequestTreatments() {
         return elem;
       }
     });
+    console.log(arr);
     setAllTreatmentRows(arr);
   }
 
   const handleNextClick = (event) => {
     event.preventDefault();
     updateRequestedTreatments(treatmentRowState);
-    history.push("/upload-supporting-documents");
+    history.push("/view-request");
   };
 
   const handleBackClick = (event) => {
@@ -72,7 +75,6 @@ function RequestTreatments() {
           updateTreatmentRow={updateTreatmentRow}
           deleteTreatmentRow={deleteTreatmentRow}
         >
-          {" "}
         </TreatmentRow>
       ))}
       <Button onClick={renderTreatmentRow}>Add Another Treatment</Button>

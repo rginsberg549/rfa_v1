@@ -17,61 +17,51 @@ function TreatmentRow(props) {
 
   useEffect(()=> {
     getDiagnosisOptions();
+  }, []);
+
+  useEffect(()=> {
     if (props.row) {
-      setDiagnosisState(props.row.diagnosis);
-      setTreatmentState(props.row.treatment);
+      setDiagnosisState(props.row.diagnosisId);
+      getTreatmentOptions(props.row.diagnosisId);
+      setTreatmentState(props.row.treatmentId);
+      getRequirements(props.row.treatmentId);
       setNoteState(props.row.note);
     }
   }, []);
 
   const getDiagnosisOptions = async () => {
     const data = await getDiagnosis();
-    let options = [];
-    for (let index = 0; index < data.data.length; index++) {
-      const element = data.data[index]
-      options[element.id]= element.diagnosisName;
-    }
-    setDiagnosisOptions(options);
-    console.log(options);
+    setDiagnosisOptions(data.data);
   };
 
   const getTreatmentOptions = async (val) => {
     const data = await axios.get("api/getTreatments/" + val)
-    console.log(data);
-    let options = [];
-    for (let index = 0; index < data.data.length; index++) {
-      const element = data.data[index];
-      options[element.id] = element.treatmentName;
-    }
-    setTreatmentOptions(options);
+    setTreatmentOptions(data.data);
   }
 
-  const getRequirements = async (val_1, val_2) => {
-    const data = await axios.get("api/getRequirements/"+ val_1 + "/" + val_2);
-    console.log(data);
-    let options = [];
-    for (let index = 0; index < data.data.length; index++) {
-      const element = data.data[index];
-      options[element.id] = element.requirement;
-    }
-    setRequirements(options);
+  const getRequirements = async (val_1) => {
+    const data = await axios.get("api/getRequirements/" + val_1);
+    setRequirements(data.data);
   } 
 
   const handleDiagnosisChange = (event) => {
     event.preventDefault();
-    console.log(event.target);
+    const diagnosis = diagnosisOptions.find(item => item.id === event.target.value);
+    setTreatmentState("");
+    setRequirements([]);
     getTreatmentOptions(event.target.value);
     setDiagnosisState(event.target.value);
-    setTreatmentRowState({...treatmentRowState, ...{ diagnosis: event.target.value }});
-    props.updateTreatmentRow({...treatmentRowState, ...{ diagnosis: event.target.value }});
+    setTreatmentRowState({...treatmentRowState, ...{ diagnosisName: diagnosis.diagnosisName, diagnosisId: event.target.value}});
+    props.updateTreatmentRow({...treatmentRowState, ...{ diagnosisName: diagnosis.diagnosisName, diagnosisId: event.target.value }});
   };
 
   const handleTreatmentChange = (event) => {
     event.preventDefault();
+    const treatment = treatmentOptions.find(item => item.id === event.target.value)
     getRequirements(diagnosisState, event.target.value);
     setTreatmentState(event.target.value);
-    setTreatmentRowState({...treatmentRowState, ...{ treatment: event.target.value }});
-    props.updateTreatmentRow({...treatmentRowState, ...{ treatment: event.target.value }});
+    setTreatmentRowState({...treatmentRowState, ...{ treatmentName: treatment.treatmentName, treatmentId: event.target.value }});
+    props.updateTreatmentRow({...treatmentRowState, ...{ treatmentName: treatment.treatmentName, treatmentId: event.target.value }});
 
   };
 
@@ -82,14 +72,16 @@ function TreatmentRow(props) {
     props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
+  console.log("Diagnosis Options", diagnosisOptions);
+
   return (
     <form>
       <div>
         <label>Select A Diagnosis: </label>
         <Select onChange={handleDiagnosisChange} value={diagnosisState}>
           {diagnosisOptions.map((item, i) => (
-            <MenuItem key={i} value={i}>
-              {item}
+            <MenuItem key={i} value={item.id}>
+              {item.diagnosisName}
             </MenuItem>
           ))}
         </Select>
@@ -99,8 +91,8 @@ function TreatmentRow(props) {
         <label>Select A Treatment</label>
         <Select onChange={handleTreatmentChange} value={treatmentState}>
           {treatmentOptions.map((item, i) => (
-            <MenuItem key={i} value={i}>
-              {item}
+            <MenuItem key={i} value={item.id}>
+              {item.treatmentName}
             </MenuItem>
           ))}
         </Select>
@@ -114,7 +106,7 @@ function TreatmentRow(props) {
     <div>
       <label>Requirements for Selected Diagnosis and Seletected Treatment</label>
       {requirements.map((item, i) => (
-            <li key={i} value={item}>{item} </li>))}
+            <li key={i} value={item.id}>{item.requirementDescription} </li>))}
     </div>
     
     <Button onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</Button>

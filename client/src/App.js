@@ -18,37 +18,36 @@ function App() {
 
   useEffect(() => {
     setState({
-      requestType: "",
-      employee_firstName: "",
-      employee_middleName: "",
-      employee_lastName: "",
-      employee_dateOfInjury: "",
-      employee_dateOfBirth: "",
-      employee_claimNumber: "",
-      employee_employer: "",
-      physician_physicianName: "",
-      physician_practiceName: "",
-      physician_contactName: "",
-      physician_address: "",
-      physician_city: "",
-      physician_state: "",
-      physician_zipcode: "",
-      physician_phoneNumber: "",
-      physician_faxNumber: "",
-      physician_specialty: "",
-      physician_npiNumber: "",
-      physician_email: "",
-      claims_companyName: "",
-      claims_contactName: "",
-      claims_address: "",
-      claims_city: "",
-      claims_state: "",
-      claims_zipcode: "",
-      claims_phoneNumber: "",
-      claims_faxNumber: "",
-      claims_email: "",
+      requestType: "New Request",
+      employee_firstName: "employee_firstName",
+      employee_middleName: "employee_middleName",
+      employee_lastName: "employee_lastName",
+      employee_dateOfInjury: "employee_dateOfInjury",
+      employee_dateOfBirth: "employee_dateOfBirth",
+      employee_claimNumber: "employee_claimNumber",
+      employee_employer: "employee_employer",
+      physician_physicianName: "physician_physicianName",
+      physician_practiceName: "physician_practiceName",
+      physician_contactName: "physician_contactName",
+      physician_address: "physician_address",
+      physician_city: "physician_city",
+      physician_state: "physician_state",
+      physician_zipcode: "physician_zipcode",
+      physician_phoneNumber: "physician_phoneNumber",
+      physician_faxNumber: "physician_faxNumber",
+      physician_specialty: "physician_specialty",
+      physician_npiNumber: "physician_npiNumber",
+      physician_email: "physician_email",
+      claims_companyName: "claims_companyName",
+      claims_contactName: "claims_contactName",
+      claims_address: "claims_address",
+      claims_city: "claims_city",
+      claims_state: "claims_state",
+      claims_zipcode: "claims_zipcode",
+      claims_phoneNumber: "claims_phoneNumber",
+      claims_faxNumber: "claims_faxNumber",
+      claims_email: "claims_email",
       requestedTreatments: [],
-      supportingDocuments: []
     });
   }, []);
 
@@ -95,9 +94,9 @@ function App() {
               <RequestTreatments/>
             </Route>
 
-            <Route exact path="/upload-supporting-documents">
+            {/* <Route exact path="/upload-supporting-documents">
               <UploadSupportingDocuments/>
-            </Route>
+            </Route> */}
 
             <Route exact path="/view-request">
               <ViewRequest/>

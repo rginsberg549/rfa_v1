@@ -7,10 +7,9 @@ router.get("/", function (req, res) {
   });
 });
 
-router.get("/:diagnosisCode/:treatmentId", function (req, res) {
+router.get("/:treatmentId", function (req, res) {
   db.Requirements.findAll({
     where: {
-      diagnosisCode: req.params.diagnosisCode,
       treatmentId: req.params.treatmentId
     }}).then(function (requirements) {
     res.json(requirements);

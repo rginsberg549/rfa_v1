@@ -2,7 +2,7 @@ var db = require("../../models");
 const router = require("express").Router();
 
 router.post("/", function (req, res) {
-  db.ClaimAdmins.create({
+  db.ClaimsAdmins.create({
       companyName: req.body.companyName,
       contactName: req.body.contactName,
       address: req.body.address,

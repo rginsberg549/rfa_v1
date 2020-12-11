@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const ClaimAdmins = sequelize.define("ClaimAdmins", {
+  const ClaimsAdmins = sequelize.define("ClaimsAdmins", {
     companyName: {
       type: DataTypes.STRING,
     },
@@ -27,16 +27,14 @@ module.exports = function (sequelize, DataTypes) {
     emailAddress: {
       type: DataTypes.STRING,
     }
-  }, {
-    freezeTableName: true
   })
 
-  ClaimAdmins.associate = function (models) {
-    ClaimAdmins.belongsTo(models.CompletedRequests, {
-      foreignKey: {
-        allowNull: true,
-      },
-    });
-  };
-  return ClaimAdmins;
+  // ClaimsAdmins.associate = function (models) {
+  //   ClaimsAdmins.belongsTo(models.CompletedRequests, {
+  //     foreignKey: {
+  //       allowNull: true,
+  //     },
+  //   });
+  // };
+  return ClaimsAdmins;
 };

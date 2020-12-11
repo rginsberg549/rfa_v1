@@ -23,13 +23,13 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  Employee.associate = function (models) {
-    Employee.belongsTo(models.CompletedRequests, {
-      foreignKey: {
-        allowNull: true,
-      },
-    });
-  };
+  // Employee.associate = function (models) {
+  //   Employee.belongsTo(models.CompletedRequests, {
+  //     foreignKey: {
+  //       allowNull: true,
+  //     },
+  //   });
+  // };
 
   return Employee;
 };

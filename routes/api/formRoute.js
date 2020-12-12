@@ -57,8 +57,8 @@ router.post("/", function (req, res) {
     .then((claimsAdminResponse) => {
 
         dbIDs.claimsAdminId = claimsAdminResponse.dataValues.id
-
-        return db.Form.create({
+        
+        db.Form.create({
             requestType: req.body.requestType,
             treatmentRowData: req.body.treatmentRowData,
             status: "Pending",
@@ -67,6 +67,8 @@ router.post("/", function (req, res) {
             PhysicianId: dbIDs.physicianId,
             ClaimsAdminId: dbIDs.claimsAdminId,
         })
+    }).then(()=> {
+        res.json("Success");
     })
     
     .catch((error) => {
@@ -77,10 +79,10 @@ router.post("/", function (req, res) {
 
 router.get("/", function(req, res) {
     db.Form.findAll({
-        include: Employee
+        include: db.Employee
     }).then(function(forms) {
         console.log(forms);
-      res.json(forms);
+        res.json(forms);
     });
   });
 

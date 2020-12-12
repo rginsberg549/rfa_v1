@@ -27,7 +27,6 @@ function EmployeeInformation() {
 
   const handleNextClick = (event) => {
     event.preventDefault();
-    //axios.post("/api/employee", employeeState)
     history.push("/physician-information");
   };
 
@@ -37,78 +36,63 @@ function EmployeeInformation() {
   };
 
   return (
-    <form>
-      <label>
-        First Name
-        <input
-          value={employee_firstName}
-          onChange={handleInput}
-          type="text"
-          name="employee_firstName"
-        />
-      </label>
-      <label>
-        Middle Name
-        <input
-          value={employee_middleName}
-          onChange={handleInput}
-          type="text"
-          name="employee_middleName"
-        />
-      </label>
-      <label>
-        Last Name
-        <input
-          value={employee_lastName}
-          onChange={handleInput}
-          type="text"
-          name="employee_lastName"
-        />
-      </label>
-      <label>
-        Date of Injury Name
-        <input
-          value={employee_dateOfInjury}
-          onChange={handleInput}
-          type="date"
-          name="employee_dateOfInjury"
-        />
-      </label>
-      <label>
-        Date of Birth
-        <input
-          value={employee_dateOfBirth}
-          onChange={handleInput}
-          type="date"
-          name="employee_dateOfBirth"
-        />
-      </label>
-      <label>
-        Claim Number
-        <input
-          value={employee_claimNumber}
-          onChange={handleInput}
-          type="text"
-          name="employee_claimNumber"
-        />
-      </label>
-      <label>
-        Employer
-        <input
-          value={employee_employer}
-          onChange={handleInput}
-          type="text"
-          name="employee_employer"
-        />
-      </label>
-      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">
-        Back
-      </Button>
-      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">
-        Next
-      </Button>
-    </form>
-  );
+    <div className="container">
+      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
+      <h6 className="text-center">DWC Form RFA</h6>
+      <h3 className="text-center">Employee Information</h3>
+      <form>
+        <div class="row">
+          <div class="col">
+            <span class="form-text">First Name</span>
+            <input type="text" class="form-control" value={employee_firstName} onChange={handleInput} type="text" name="employee_firstName"/>
+            </div>
+        
+        <div class="col">
+        <span class="form-text">Middle Name</span>
+          <input type="text" class="form-control" value={employee_middleName} onChange={handleInput} type="text" name="employee_middleName"/>
+          </div>
+        
+        <div class="col">
+        <span class="form-text">Last Name</span>
+          <input type="text" class="form-control" value={employee_lastName} onChange={handleInput} type="text" name="employee_lastName"/>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col-6">
+            <span class="form-text">Date of Injury</span>
+            <input type="date" class="form-control" value={employee_dateOfInjury} onChange={handleInput} name="employee_dateOfInjury" />
+          </div>
+          
+          <div className="col-6">
+          <span class="form-text">Date of Birth</span>
+            <input type="date" class="form-control"  value={employee_dateOfBirth} onChange={handleInput} name="employee_dateOfBirth"/>
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col">
+          <span class="form-text">Claim Number</span>
+            <input ype="text" class="form-control" placeholder="Claim Number" value={employee_claimNumber} onChange={handleInput} type="text" name="employee_claimNumber" />
+          </div>
+
+
+          <div className="col">
+          <span class="form-text">Employer</span>
+          <input ype="text" class="form-control" placeholder="Employee" value={employee_employer} onChange={handleInput} type="text" name="employee_employer"/>
+          </div>
+        </div>
+        </form>
+        
+        <div classNAme="row">
+          <div className="col text-center">
+            <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
+            <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>
+          </div>
+          
+        </div> 
+  </div>
+);
 }
 
 export default EmployeeInformation;

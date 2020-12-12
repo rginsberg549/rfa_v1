@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Nav from "./components/Nav";
+import Home from "./components/Home";
 import RequestType from "./components/RequestType";
 import EmployeeInformation from "./components/EmployeeInformation";
 import PhysicianInformation from "./components/PhysicianInformation";
@@ -73,7 +73,7 @@ function App() {
       <FormObject.Provider value={{ state, updateContextField, updateRequestedTreatments, updateSupportingDocuments}}>
         <Router>
           <Switch>
-            <Route exact path="/" component={Nav} />
+            <Route exact path="/" component={Home} />
             
             <Route exact path="/request-type" >
               <RequestType />

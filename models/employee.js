@@ -23,8 +23,8 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
- Employee.associate = function (models) {
-    Employee.belongsTo(models.Form);
+  Employee.associate = function(models) {
+    Employee.hasMany(models.Form)
   };
 
   return Employee;

@@ -95,8 +95,10 @@ function SaveRequest() {
             emailAddress: claims_email,
           },
           treatmentRowData: requestedTreatments
-        }).then(
-          history.push("/forms"))
+        }).then(() => {
+          history.push("/forms")
+        })
+          
         }
   
         return (

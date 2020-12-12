@@ -1,6 +1,7 @@
 var db = require("../../models");
 const router = require("express").Router();
 
+
 router.post("/", function (req, res) {
     console.log(req.body)
 
@@ -72,6 +73,16 @@ router.post("/", function (req, res) {
             res.json(error);
     })
 })
+
+
+router.get("/", function(req, res) {
+    db.Form.findAll({
+        include: Employee
+    }).then(function(forms) {
+        console.log(forms);
+      res.json(forms);
+    });
+  });
 
 
 module.exports = router;

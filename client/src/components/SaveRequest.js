@@ -96,7 +96,7 @@ function SaveRequest() {
           },
           treatmentRowData: requestedTreatments
         }).then(
-          history.push("/all-requests"))
+          history.push("/forms"))
         }
   
         return (

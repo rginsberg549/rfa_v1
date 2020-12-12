@@ -48,7 +48,7 @@ function ViewRequest() {
 
   const handleNextClick = (event) => {
     event.preventDefault();
-    history.push("/completed-requests");
+    history.push("/forms");
   };
 
   const handleBackClick = (event) => {

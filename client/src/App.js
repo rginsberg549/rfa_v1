@@ -9,6 +9,7 @@ import RequestTreatments from "./components/RequestTeatments";
 import UploadSupportingDocuments from "./components/UploadSupportingDocuments";
 import ViewRequest from "./components/ViewRequest";
 import SaveRequest from "./components/SaveRequest";
+import AllForms from "./components/AllForms";
 import FormObject from "./utils/FormContext";
 import "./App.css";
 
@@ -102,8 +103,8 @@ function App() {
               <ViewRequest/>
             </Route>
 
-            <Route exact path="/completed-requests">
-
+            <Route exact path="/forms">
+              <AllForms/>
             </Route>
 
           </Switch>

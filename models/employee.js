@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
  Employee.associate = function (models) {
-    Employee.hasOne(models.Form);
+    Employee.belongsTo(models.Form);
   };
 
   return Employee;

@@ -2,7 +2,7 @@ var db = require("../../models");
 const router = require("express").Router();
 
 router.post("/", function (req, res) {
-  db.Employees.create({
+  db.Employee.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     middleName: req.body.middleName,

@@ -38,12 +38,10 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  // Physician.associate = function (models) {
-  //   Physician.belongsTo(models.CompletedRequests, {
-  //     foreignKey: {
-  //       allowNull: true,
-  //     },
-  //   });
-  // };
+  Physician.associate = function (models) {
+    Physician.hasOne(models.Form);
+  };
+
+
   return Physician;
 };

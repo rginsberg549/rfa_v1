@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Employee = sequelize.define("Employees", {
+  const Employee = sequelize.define("Employee", {
     firstName: {
       type: DataTypes.STRING,
     },
@@ -23,13 +23,9 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-  // Employee.associate = function (models) {
-  //   Employee.belongsTo(models.CompletedRequests, {
-  //     foreignKey: {
-  //       allowNull: true,
-  //     },
-  //   });
-  // };
+ Employee.associate = function (models) {
+    Employee.hasOne(models.Form);
+  };
 
   return Employee;
 };

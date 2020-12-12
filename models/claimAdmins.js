@@ -27,14 +27,10 @@ module.exports = function (sequelize, DataTypes) {
     emailAddress: {
       type: DataTypes.STRING,
     }
-  })
+  });
 
-  // ClaimsAdmins.associate = function (models) {
-  //   ClaimsAdmins.belongsTo(models.CompletedRequests, {
-  //     foreignKey: {
-  //       allowNull: true,
-  //     },
-  //   });
-  // };
+  ClaimsAdmins.associate = function (models) {
+    ClaimsAdmins.hasOne(models.Form);
+  };
   return ClaimsAdmins;
 };

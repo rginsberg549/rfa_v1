@@ -12,6 +12,7 @@ function SaveRequest() {
   
   const {
     state: {
+      requestType,
       employee_firstName,
       employee_middleName,
       employee_lastName,
@@ -40,6 +41,7 @@ function SaveRequest() {
       claims_phoneNumber,
       claims_faxNumber,
       claims_email,
+      requestedTreatments
     },
   } = useContext(FormObject);
 
@@ -55,21 +57,19 @@ function SaveRequest() {
 
   function save() {
 
-    console.log("State", );
-
     axios
-      .post("/api/employees", {
-        firstName: employee_firstName,
-        middleName: employee_middleName,
-        lastName: employee_lastName,
-        dateOfInjury: employee_dateOfInjury,
-        dateOfBirth: employee_dateOfBirth,
-        claimNumber: employee_claimNumber,
-        employer: employee_employer,
-      })
-      .then(
-        axios
-          .post("/api/physicians", {
+      .post("/api/form", {
+          requestType: requestType,
+          employee: {
+            firstName: employee_firstName,
+            middleName: employee_middleName,
+            lastName: employee_lastName,
+            dateOfInjury: employee_dateOfInjury,
+            dateOfBirth: employee_dateOfBirth,
+            claimNumber: employee_claimNumber,
+            employer: employee_employer,
+          },
+          physician: {
             physicianName: physician_physicianName,
             practiceName: physician_practiceName,
             contactName: physician_contactName,
@@ -81,28 +81,25 @@ function SaveRequest() {
             faxNumber: physician_faxNumber,
             specialty: physician_specialty,
             npiNumber: physician_npiNumber,
-            emailAddress: physician_email,
-          })
-          .then(
-            axios.post("/api/claimAdmins", {
-              companyName: claims_companyName,
-              contactName: claims_contactName,
-              address: claims_address,
-              city: claims_city,
-              state: claims_state,
-              zipCode: claims_zipcode,
-              phoneNumber: claims_phoneNumber,
-              faxNumber: claims_faxNumber,
-              emailAddress: claims_email,
-            }).then(()=> {
-              history.push("/all-requests");
-            }   
-            )
-          )
-      );
-  }
-
-  return (
+            emailAddress: physician_email
+          },
+          claimsAdmin: {
+            companyName: claims_companyName,
+            contactName: claims_contactName,
+            address: claims_address,
+            city: claims_city,
+            state: claims_state,
+            zipCode: claims_zipcode,
+            phoneNumber: claims_phoneNumber,
+            faxNumber: claims_faxNumber,
+            emailAddress: claims_email,
+          },
+          treatmentRowData: requestedTreatments
+        }).then(
+          history.push("/all-requests"))
+        }
+  
+        return (
   <div>
     <Button onClick={save}>Save Request</Button>
   </div>);

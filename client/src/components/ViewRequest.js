@@ -58,54 +58,227 @@ function ViewRequest() {
 
   return (
     <div class="view-request">
-      <div>Request Type : {requestType}</div>
-      <div>Employee Name: {employee_firstName}</div>
-      <div>Employee Middle Name: {employee_middleName}</div>
-      <div>Employee Last Name: {employee_lastName}</div>
-      <div>Date of Injury: {employee_dateOfInjury}</div>
-      <div>Date of Birth: {employee_dateOfBirth}</div>
-      <div>Claim Number: {employee_claimNumber}</div>
-      <div>Employer: {employee_employer}</div>
-      <div>Physician Name: {physician_physicianName}</div>
-      <div>Practice Name: {physician_practiceName}</div>
-      <div>Physician Contact: {physician_contactName}</div>
-      <div>Physician Address: {physician_address}</div>
-      <div>Physician City: {physician_city}</div>
-      <div>Physician State: {physician_state}</div>
-      <div>Phyzisican Zipcode: {physician_zipcode}</div>
-      <div>Physician Phone Number: {physician_phoneNumber}</div>
-      <div>Physican Fax Number: {physician_faxNumber}</div>
-      <div>Physician Specialty: {physician_specialty}</div>
-      <div>Physician NPI Number: {physician_npiNumber}</div>
-      <div>Physician Email: {physician_email}</div>
-      <div>Claims Company: {claims_companyName}</div>
-      <div>Claims Contact Name: {claims_contactName}</div>
-      <div>Claims Address: {claims_address}</div>
-      <div>Claims City: {claims_city}</div>
-      <div>Claims State: {claims_state}</div>
-      <div>Claims Zipcode: {claims_zipcode}</div>
-      <div>Claims Phone Number: {claims_phoneNumber}</div>
-      <div>Claims Fax Number: {claims_faxNumber}</div>
-      <div>Claims Email Address: {claims_email}</div>
-      <div>Requested Treatments:</div>
+      
+      <div className="row employee-information-row">
+      <h3 className="">Employee Information</h3>
+      
+      <div className="row">
+        <div class="col">
+          <span class="form-text">First Name</span>
+          <input disabled type="text" class="form-control" value={employee_firstName} type="text" name="employee_firstName"/>
+          </div>
+    
+    <div class="col">
+    <span class="form-text">Middle Name</span>
+      <input disabled type="text" class="form-control" value={employee_middleName} type="text" name="employee_middleName"/>
+      </div>
+    
+    <div class="col">
+    <span class="form-text">Last Name</span>
+      <input disabled type="text" class="form-control" value={employee_lastName} type="text" name="employee_lastName"/>
+      </div>
+    </div>
 
-      {requestedTreatments.length && requestedTreatments.map((item, i) => {
-      console.log(requestedTreatments);
-        return (
-        <div>
-          <div>Diagnosis: {item.diagnosisName}</div>
-          <div>Treatment: {item.treatmentName}</div>
-          <div>Note: {item.note}</div>
+      <div className="row">
+      <div className="col-6">
+        <span class="form-text">Date of Injury</span>
+        <input disabled type="date" class="form-control" value={employee_dateOfInjury} name="employee_dateOfInjury" />
+      </div>
+      
+      <div className="col-6">
+        <span class="form-text">Date of Birth</span>
+        <input disabled type="date" class="form-control"  value={employee_dateOfBirth} name="employee_dateOfBirth"/>
+      </div>
+    </div>
+
+      <div className="row">
+        <div className="col">
+          <span class="form-text">Claim Number</span>
+          <input disabled type="text" class="form-control" placeholder="Claim Number" value={employee_claimNumber} type="text" name="employee_claimNumber" />
+      </div>
+
+
+      <div className="col">
+      <span class="form-text">Employer</span>
+      <input disabled type="text" class="form-control" placeholder="Employee" value={employee_employer} type="text" name="employee_employer"/>
+      </div>
+    </div>
+  </div>
+
+  
+      <hr></hr>
+
+     <div className="row physician-information-row">
+       <h3 className="">Physician Information</h3>
+    
+
+      <div className="row">
+        <div className="col">
+          <span className="form-text">Physician Name</span>
+          <input disabled className="form-control" value={physician_physicianName} type="text" name="physician_physicianName"></input>
         </div>
+
+        <div className="col">
+            <span className="form-text">Specialty</span>
+            <input disabled className="form-control" value={physician_specialty} type="text" name="physician_specialty"></input>
+          </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <span class="form-text">Practice Name</span>
+          <input disabled className="form-control" value={physician_practiceName} type="text" name="physician_practiceName"></input>
+          </div>
+
+        <div className="col">
+          <span className="form-text">Contact Name</span>
+          <input disabled className="form-control" value={physician_contactName} type="text" name="physician_contactName"/>
+        </div> 
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <span className="form-text">E-Mail Address</span>
+          <input disabled className="form-control" value={physician_email} type="text" name="physician_email"></input>
+          </div>
+
+      <div className="col">
+        <span className="form-text">NPI Number</span>
+        <input disabled className="form-control" value={physician_npiNumber} type="text" name="physician_npiNumber"></input>
+      </div>
+
+      </div>
+
+    <div className="row">
+      <div className="col">
+        <span className="form-text">Address </span>
+        <input disabled className="form-control" value={physician_address} type="text" name="physician_address"></input>
+      </div>
+      
+      <div className="col">
+        <span className="form-text">City</span>
+        <input disabled className="form-control" value={physician_city} type="text" name="physician_city"></input>
+        </div>
+    </div>
+
+    <div className="row">
+      <div className="col">
+        <span className="form-text">State</span>
+        <input disabled className="form-control" value={physician_state} type="text" name="physician_state"></input>
+      
+      </div>
+
+      <div className="col">
+        <span className="form-text"> Zip Code </span>
+        <input disabled className="form-control" value={physician_zipcode} type="text" name="physician_zipcode"/>
+        </div>
+
+    </div>
+
+    <div className="row">
+    <div className="col">
+        <span className="form-text">Phone Number </span>
+        <input disabled className="form-control" value={physician_phoneNumber} type="text" name="physician_phoneNumber"></input>
+      </div>
+
+      <div className="col">
+      <span className="form-text">Fax Number</span>
+      <input disabled className="form-control" value={physician_faxNumber} type="text" name="physician_faxNumber"></input>
+      </div>
+    </div>
+  </div>
+      
+      
+      <hr></hr>
+  <div className="row claims-admin-information">
+    <h3 className="">Claims Administrator Information</h3>
+  
+  <div className="row">
+    <div className="col">
+      <span className="form-text">Contact Name</span>
+      <input disabled className="form-control" value={claims_contactName} type="text" name="claims_contactName"/>
+    </div> 
+    
+    <div className="col">
+      <span className="form-text">E-Mail Address</span>
+      <input disabled className="form-control" value={claims_email} type="text" name="claims_email"></input>
+      </div>
+  </div>
+
+  <div className="row">
+    <div className="col">
+      <span className="form-text">Address </span>
+      <input disabled className="form-control" value={claims_address} type="text" name="claims_address"></input>
+    </div>
+  
+    <div className="col">
+      <span className="form-text">City</span>
+      <input disabled className="form-control" value={claims_city} type="text" name="claims_city"></input>
+    </div>
+  </div>
+
+<div className="row">
+  <div className="col">
+    <span className="form-text">State</span>
+    <input disabled className="form-control" value={claims_state} type="text" name="claims_state"></input>
+  
+  </div>
+
+  <div className="col">
+    <span className="form-text"> Zip Code </span>
+    <input disabled className="form-control" value={claims_zipcode} type="text" name="claims_zipcode"/>
+    </div>
+
+</div>
+
+  <div className="row">
+    <div className="col">
+      <span className="form-text">Phone Number </span>
+      <input disabled className="form-control" value={claims_phoneNumber} type="text" name="claims_phoneNumber"></input>
+  </div>
+
+  <div className="col">
+  <span className="form-text">Fax Number</span>
+  <input disabled className="form-control" value={claims_faxNumber} type="text" name="claims_faxNumber"></input>
+  </div>
+</div>
+</div>
+
+      <div className="row">
+        <h3>Requested Treatments</h3>
+
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Diagnosis</th>
+              <th scope="col">Treatment</th>
+              <th scope="col">Other Information</th>
+            </tr>
+          </thead>
+            
+      {requestedTreatments.length && requestedTreatments.map((item, i) => {
+        return (
+          <tbody>
+              <tr>
+                {/* <th scope="row"></th> */}
+                <td className="col">{item.diagnosisName}</td>
+                <td className="col">{item.treatmentName}</td>
+                <td className="col">{item.note}</td>
+              </tr>
+            </tbody>
         )
       })}
+    </table>
+      
+      
+    
 
 
-      <Button onClick={handleBackClick} type="submit" value="back">
-        Back
-      </Button>
-      <SaveRequest/>
+      
     </div>
+    <Button onClick={handleBackClick} type="submit" value="back"> Back</Button>
+    <SaveRequest/>
+  </div>
   );
 }
 

@@ -103,11 +103,11 @@ function TreatmentRow(props) {
         <TextareaAutosize placeholder="Add addiitonal information such as frequency, duration, and/or quantity"className="textbox" onChange={handleNoteChange}/>
     </div>
 
-    <div className="col">
-      <button class="btn btn-secondary back-button m-3" onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</button>
+    <div className="row d-flex justify-content-center">
+      <button class="col-3 btn btn-danger back-button m-3" onClick={() => props.deleteTreatmentRow(props.rowKey)}> - Delete Treatment</button>
     </div>
 
-    <div class="row">
+    <div class="row ">
       <div className="col text-center">
       <ol className="list-group">
       {requirements.map((item, i) => (

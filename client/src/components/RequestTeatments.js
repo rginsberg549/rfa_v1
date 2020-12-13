@@ -84,8 +84,8 @@ function RequestTreatments() {
         </TreatmentRow>
       ))}
 
-      <div className="row">
-        <button class="btn btn-secondary back-button m-3" onClick={renderTreatmentRow}> + Add Treatment</button>
+      <div className="row d-flex justify-content-center">
+        <button class="col-3 btn btn-primary back-button m-3 pl-3" onClick={renderTreatmentRow}> + Add Treatment</button>
       </div>
       
       <div className="row">

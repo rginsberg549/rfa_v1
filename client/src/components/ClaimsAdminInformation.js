@@ -37,96 +37,83 @@ function ClaimsAdministratorInformation() {
   };
 
   return (
-    <form>
-      <label>
-        Company Name
-        <input
-          value={claims_companyName}
-          onChange={handleInput}
-          type="text"
-          name="claims_companyName"
-        />
-      </label>
-      <label>
-        Contact Name
-        <input
-          value={claims_contactName}
-          onChange={handleInput}
-          type="text"
-          name="claims_contactName"
-        />
-      </label>
-      <label>
-        Address
-        <input
-          value={claims_address}
-          onChange={handleInput}
-          type="text"
-          name="claims_address"
-        />
-      </label>
-      <label>
-        City
-        <input
-          value={claims_city}
-          onChange={handleInput}
-          type="text"
-          name="claims_city"
-        />
-      </label>
-      <label>
-        State
-        <input
-          value={claims_state}
-          onChange={handleInput}
-          type="text"
-          name="claims_state"
-        />
-      </label>
-      <label>
-        Zip Code
-        <input
-          value={claims_zipcode}
-          onChange={handleInput}
-          type="text"
-          name="claims_zipcode"
-        />
-      </label>
-      <label>
-        Phone Number
-        <input
-          value={claims_phoneNumber}
-          onChange={handleInput}
-          type="text"
-          name="claims_phoneNumber"
-        />
-      </label>
-      <label>
-        Fax Number
-        <input
-          value={claims_faxNumber}
-          onChange={handleInput}
-          type="text"
-          name="claims_faxNumber"
-        />
-      </label>
-      <label>
-        E-Mail Address
-        <input
-          value={claims_email}
-          onChange={handleInput}
-          type="text"
-          name="claims_email"
-        />
-      </label>
-      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">
-        Back
-      </Button>
-      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">
-        Next
-      </Button>
-    </form>
-  );
-}
+  
+  <div className="container">
+    <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
+    <h6 className="text-center">DWC Form RFA</h6>
+    <h3 className="text-center">Claims Administrator Information</h3>
+
+<form>
+  <div className="row">
+    <div className="col">
+      <span className="form-text">Company Name</span>
+      <input className="form-control" value={claims_companyName} onChange={handleInput} type="text" name="claims_companyName"></input>
+    </div>
+
+   
+  </div>
+
+
+  <div className="row">
+
+  <div className="col">
+      <span className="form-text">Contact Name</span>
+      <input className="form-control" value={claims_contactName} onChange={handleInput} type="text" name="claims_contactName"/>
+    </div> 
+    
+    <div className="col">
+      <span className="form-text">E-Mail Address</span>
+      <input className="form-control" value={claims_email} onChange={handleInput} type="text" name="claims_email"></input>
+      </div>
+  </div>
+
+<div className="row">
+  <div className="col">
+    <span className="form-text">Address </span>
+    <input className="form-control" value={claims_address} onChange={handleInput} type="text" name="claims_address"></input>
+  </div>
+  
+  <div className="col">
+    <span className="form-text">City</span>
+    <input className="form-control" value={claims_city} onChange={handleInput} type="text" name="claims_city"></input>
+    </div>
+</div>
+
+<div className="row">
+  <div className="col">
+    <span className="form-text">State</span>
+    <input className="form-control" value={claims_state} onChange={handleInput} type="text" name="claims_state"></input>
+  
+  </div>
+
+  <div className="col">
+    <span className="form-text"> Zip Code </span>
+    <input className="form-control" value={claims_zipcode} onChange={handleInput} type="text" name="claims_zipcode"/>
+    </div>
+
+</div>
+
+<div className="row">
+<div className="col">
+    <span className="form-text">Phone Number </span>
+    <input className="form-control" value={claims_phoneNumber} onChange={handleInput} type="text" name="claims_phoneNumber"></input>
+  </div>
+
+  <div className="col">
+  <span className="form-text">Fax Number</span>
+  <input className="form-control" value={claims_faxNumber} onChange={handleInput} type="text" name="claims_faxNumber"></input>
+  </div>
+</div>
+</form>
+
+  <div className="row">
+    <div className="col text-center">
+      <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
+      <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>
+    </div>
+  </div>
+</div>
+)
+};
 
 export default ClaimsAdministratorInformation;

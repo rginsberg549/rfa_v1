@@ -65,6 +65,12 @@ function RequestTreatments() {
   };
 
   return (
+
+    <div className="container">
+      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
+      <h6 className="text-center">DWC Form RFA</h6>
+      <h3 className="text-center">Requested Treatments</h3>
+
     <div>
       {treatmentRowState.map((item, i) => (
         <TreatmentRow
@@ -77,24 +83,19 @@ function RequestTreatments() {
         >
         </TreatmentRow>
       ))}
-      <Button onClick={renderTreatmentRow}>Add Another Treatment</Button>
-      <Button
-        onClick={handleBackClick}
-        type="submit"
-        value="back"
-        class="back-button"
-      >
-        Back
-      </Button>
-      <Button
-        onClick={handleNextClick}
-        type="submit"
-        value="next"
-        class="next-button"
-      >
-        Next
-      </Button>
+
+      <div className="row">
+        <button class="btn btn-secondary back-button m-3" onClick={renderTreatmentRow}> + Add Treatment</button>
+      </div>
+      
+      <div className="row">
+        <div className="col text-center">
+          <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
+          <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>
+        </div>
+      </div>
     </div>
+  </div>
   );
 }
 

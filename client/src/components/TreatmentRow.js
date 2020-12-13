@@ -1,7 +1,5 @@
-import React, { useEffect, useState, componentDidMount } from "react";
+import React, { useEffect, useState } from "react";
 import getDiagnosis from "../utils/getDiagnosis";
-import getTreatments from "../utils/getTreatments";
-import getRequirements from "../utils/getRequirements"
 import { MenuItem, Select, TextareaAutosize, Button} from "@material-ui/core";
 import axios from "axios";
 
@@ -72,24 +70,26 @@ function TreatmentRow(props) {
     props.updateTreatmentRow({...treatmentRowState, ...{ note: event.target.value }});
   };
 
-  console.log("Diagnosis Options", diagnosisOptions);
+
 
   return (
-    <form>
-      <div>
-        <label>Select A Diagnosis: </label>
-        <Select onChange={handleDiagnosisChange} value={diagnosisState}>
-          {diagnosisOptions.map((item, i) => (
+
+    <div className="container">
+      <div className="row">
+        <div className="col">
+          <span className="form-text">Select A Diagnosis (Required): </span>
+          <Select className="select" onChange={handleDiagnosisChange} value={diagnosisState}>
+            {diagnosisOptions.map((item, i) => (
             <MenuItem key={i} value={item.id}>
               {item.diagnosisName}
-            </MenuItem>
+              </MenuItem>
           ))}
         </Select>
       </div>
 
-      <div>
-        <label>Select A Treatment</label>
-        <Select onChange={handleTreatmentChange} value={treatmentState}>
+      <div className="col">
+        <span className="form-text">Select A Treatment (Required):</span>
+        <Select className="select" onChange={handleTreatmentChange} value={treatmentState}>
           {treatmentOptions.map((item, i) => (
             <MenuItem key={i} value={item.id}>
               {item.treatmentName}
@@ -98,19 +98,26 @@ function TreatmentRow(props) {
         </Select>
       </div>
 
-      <div>
-        <label>Add Additional Notes</label>
-        <TextareaAutosize onChange={handleNoteChange}/>
+      <div className="col">
+        <div className="form-text">Other Information</div>
+        <TextareaAutosize placeholder="Add addiitonal information such as frequency, duration, and/or quantity"className="textbox" onChange={handleNoteChange}/>
     </div>
 
-    <div>
-      <label>Requirements for Selected Diagnosis and Seletected Treatment</label>
-      {requirements.map((item, i) => (
-            <li key={i} value={item.id}>{item.requirementDescription} </li>))}
+    <div className="col">
+      <button class="btn btn-secondary back-button m-3" onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</button>
     </div>
+
+    <div class="row">
+      <div className="col text-center">
+      <ol className="list-group">
+      {requirements.map((item, i) => (
+      <li className="list-group-item list-group-item-secondary" key={i} value={item.id}>{item.requirementDescription} </li>))}
+      </ol>
+      </div>
+    </div>
+  </div>
+</div>
     
-    <Button onClick={() => props.deleteTreatmentRow(props.rowKey)}>Delete</Button>
-    </form>
   );
 }
 

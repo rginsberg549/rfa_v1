@@ -40,123 +40,97 @@ function PhysicianInformation() {
   };
 
   return (
-    <form>
-      <label>
-        Physician Name
-        <input
-          value={physician_physicianName}
-          onChange={handleInput}
-          type="text"
-          name="physician_physicianName"
-        />
-      </label>
-      <label>
-        Practice Name
-        <input
-          value={physician_practiceName}
-          onChange={handleInput}
-          type="text"
-          name="physician_practiceName"
-        />
-      </label>
-      <label>
-        Contact Name
-        <input
-          value={physician_contactName}
-          onChange={handleInput}
-          type="text"
-          name="physician_contactName"
-        />
-      </label>
-      <label>
-        Address
-        <input
-          value={physician_address}
-          onChange={handleInput}
-          type="text"
-          name="physician_address"
-        />
-      </label>
-      <label>
-        City
-        <input
-          value={physician_city}
-          onChange={handleInput}
-          type="text"
-          name="physician_city"
-        />
-      </label>
-      <label>
-        State
-        <input
-          value={physician_state}
-          onChange={handleInput}
-          type="text"
-          name="physician_state"
-        />
-      </label>
-      <label>
-        Zip Code
-        <input
-          value={physician_zipcode}
-          onChange={handleInput}
-          type="text"
-          name="physician_zipcode"
-        />
-      </label>
-      <label>
-        Phone Number
-        <input
-          value={physician_phoneNumber}
-          onChange={handleInput}
-          type="text"
-          name="physician_phoneNumber"
-        />
-      </label>
-      <label>
-        Fax Number
-        <input
-          value={physician_faxNumber}
-          onChange={handleInput}
-          type="text"
-          name="physician_faxNumber"
-        />
-      </label>
-      <label>
-        E-Mail Address
-        <input
-          value={physician_email}
-          onChange={handleInput}
-          type="text"
-          name="physician_email"
-        />
-      </label>
-      <label>
-        Specialty
-        <input
-          value={physician_specialty}
-          onChange={handleInput}
-          type="text"
-          name="physician_specialty"
-        />
-      </label>
-      <label>
-        NPI Number
-        <input
-          value={physician_npiNumber}
-          onChange={handleInput}
-          type="text"
-          name="physician_npiNumber"
-        />
-      </label>
 
-      <Button onClick={handleBackClick} type="submit" value="back" class="back-button">
-        Back
-      </Button>
-      <Button onClick={handleNextClick} type="submit" value="next" class="next-button">
-        Next
-      </Button>
-    </form>
+    <div className="container">
+      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
+      <h6 className="text-center">DWC Form RFA</h6>
+      <h3 className="text-center">Physician Information</h3>
+    
+    <form>
+      <div className="row">
+        <div className="col">
+          <span className="form-text">Physician Name</span>
+          <input className="form-control" value={physician_physicianName} onChange={handleInput} type="text" name="physician_physicianName"></input>
+        </div>
+
+        <div className="col">
+            <span className="form-text">Specialty</span>
+            <input className="form-control" value={physician_specialty} onChange={handleInput} type="text" name="physician_specialty"></input>
+          </div>
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <span class="form-text">Practice Name</span>
+          <input className="form-control" value={physician_practiceName} onChange={handleInput} type="text" name="physician_practiceName"></input>
+          </div>
+
+        <div className="col">
+          <span className="form-text">Contact Name</span>
+          <input className="form-control" value={physician_contactName} onChange={handleInput} type="text" name="physician_contactName"/>
+        </div> 
+      </div>
+
+      <div className="row">
+        <div className="col">
+          <span className="form-text">E-Mail Address</span>
+          <input className="form-control" value={physician_email} onChange={handleInput} type="text" name="physician_email"></input>
+          </div>
+
+      <div className="col">
+        <span className="form-text">NPI Number</span>
+        <input className="form-control" value={physician_npiNumber} onChange={handleInput} type="text" name="physician_npiNumber"></input>
+      </div>
+
+      </div>
+
+    <div className="row">
+      <div className="col">
+        <span className="form-text">Address </span>
+        <input className="form-control" value={physician_address} onChange={handleInput} type="text" name="physician_address"></input>
+      </div>
+      
+      <div className="col">
+        <span className="form-text">City</span>
+        <input className="form-control" value={physician_city} onChange={handleInput} type="text" name="physician_city"></input>
+        </div>
+    </div>
+
+    <div className="row">
+      <div className="col">
+        <span className="form-text">State</span>
+        <input className="form-control" value={physician_state} onChange={handleInput} type="text" name="physician_state"></input>
+      
+      </div>
+
+      <div className="col">
+        <span className="form-text"> Zip Code </span>
+        <input className="form-control" value={physician_zipcode} onChange={handleInput} type="text" name="physician_zipcode"/>
+        </div>
+
+    </div>
+
+    <div className="row">
+    <div className="col">
+        <span className="form-text">Phone Number </span>
+        <input className="form-control" value={physician_phoneNumber} onChange={handleInput} type="text" name="physician_phoneNumber"></input>
+      </div>
+
+      <div className="col">
+      <span className="form-text">Fax Number</span>
+      <input className="form-control" value={physician_faxNumber} onChange={handleInput} type="text" name="physician_faxNumber"></input>
+      </div>
+    </div>
+  </form>
+
+      <div className="row">
+        <div className="col text-center">
+          <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
+          <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>
+        </div>
+      </div>
+  </div>
+      
   );
 }
 

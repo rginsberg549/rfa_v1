@@ -45,7 +45,7 @@ function EmployeeInformation() {
           <div class="col">
             <span class="form-text">First Name</span>
             <input type="text" class="form-control" value={employee_firstName} onChange={handleInput} type="text" name="employee_firstName"/>
-            </div>
+           </div>
         
         <div class="col">
         <span class="form-text">Middle Name</span>

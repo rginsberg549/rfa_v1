@@ -30,7 +30,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   ClaimsAdmins.associate = function (models) {
-    ClaimsAdmins.hasOne(models.Form);
+    ClaimsAdmins.hasMany(models.Form);
   };
   return ClaimsAdmins;
 };

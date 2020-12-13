@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  const Physician = sequelize.define("Physicians", {
+  const Physician = sequelize.define("Physician", {
     physicianName: {
       type: DataTypes.STRING,
     },
@@ -31,17 +31,15 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     specialty: {
-      type:DataTypes.STRING
+      type: DataTypes.STRING
     },
     npiNumber: {
       type: DataTypes.STRING
     }
   });
-
   Physician.associate = function (models) {
     Physician.hasOne(models.Form);
   };
-
 
   return Physician;
 };

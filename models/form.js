@@ -16,15 +16,14 @@ module.exports = function (sequelize, DataTypes) {
 
   Form.associate = function (models) {
     Form.belongsTo(models.Employee);
-  };
-
-  Form.associate = function (models) {
-    Form.belongsTo(models.Physician);
-  };
-
-  Form.associate = function (models) {
     Form.belongsTo(models.ClaimsAdmins);
+    Form.belongsTo(models.Physician);
+
   };
+
+  // Form.associate = function (models) {
+  //   Form.belongsTo(models.ClaimsAdmins);
+  // };
 
   return Form;
 };

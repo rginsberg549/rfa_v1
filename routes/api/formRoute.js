@@ -8,24 +8,65 @@ config.apiTokenId = "api_test_LkEn6pDm4qNyQNjphS";
 config.apiTokenSecret = "ELxPagSTSqmyxeyqcbtZLTm3PGbQy2fgbhYX5NHyXg";
 
 function getPDFURL(data, dbIDs) {
+    console.log(data);
   var client = new DocSpring.Client(config);
   var template_id = "tpl_JmKeMrtxHxYyN6dN6H";
   var submission_data = {
     editable: false,
     data: {
-      employee_full_name:
-        data.employee.firstName + " " + data.employee.lastName,
+      fullName: data.employee.lastName + ", " + data.employee.firstName + ", " + data.employee.middleName,
+      dateOfInjury: data.employee.dateOfInjury,
+      dateOfBirth: data.employee.dateOfBirth,
+      claimNumber: data.employee.claimNumber,
+      employer: data.employee.employer,
+      physicianFullName: data.physician.physicianName,
+      practiceName: data.physician.practiceName,
+      physicianContactName: data.physician.contactName,
+      physicianAddress: data.physician.address,
+      physicianCity: data.physician.city,
+      physicianState: data.physician.state,
+      physicianZipcode: data.physician.zipCode,
+      physicianPhoneNumber: data.physician.phoneNumber,
+      physicianFaxNumber: data.physician.faxNumber,
+      specialty: data.physician.specialty,
+      npiNumber: data.physician.npiNumber,
+      physicianEmailAddress: data.physician.emailAddress,
+      companyName: data.claimsAdmin.companyName,
+      claimsAdminContactName: data.claimsAdmin.contactName,
+      claimsAdminAddress: data.claimsAdmin.address,
+      claimsAdminCity: data.claimsAdmin.city,
+      claimsAdminState: data.claimsAdmin.state,
+      claimsAdminZipcode: data.claimsAdmin.zipCode,
+      claimsAdminPhone: data.claimsAdmin.phoneNumber,
+      claimsAdminFax: data.claimsAdmin.faxNumber,
+      claimsAdminEmail: data.claimsAdmin.emailAddress,
+      diagnosis1: data.treatmentRowData[0].diagnosisName,
+      diagnosis2: "",
+      diagnosis3: "",
+      diagnosis4: "",
+      diagnosis5: "",
+      treatment1: data.treatmentRowData[0].treatmentName,
+      treatment2:"",
+      treatment3:"",
+      treatment4:"",
+      treatment5:"",
+      notes1: data.treatmentRowData[0].note,
+      notes2:"",
+      notes3:"",
+      notes4:"",
+      notes5:"",
     },
   };
   return new Promise(function (resolve, reject) {
     client.generatePDF(
       template_id,
       submission_data,
-      function (error, response) {
+      async function (error, response) {
         if (error) {
           reject(error);
         }
-        var submission = response.submission;
+        var submission = await response.submission;
+        console.log(submission);
         db.Form.create({
           requestType: data.requestType,
           treatmentRowData: data.treatmentRowData,

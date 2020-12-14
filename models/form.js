@@ -10,7 +10,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     pdfURL: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING(2048)
     }
   });
 

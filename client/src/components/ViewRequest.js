@@ -260,7 +260,7 @@ function ViewRequest() {
             </tr>
           </thead>
             
-      {requestedTreatments.length && requestedTreatments.map((item, i) => {
+      {requestedTreatments.length > 0 && requestedTreatments.map((item, i) => {
         return (
           <tbody>
               <tr>

@@ -100,7 +100,7 @@ function TreatmentRow(props) {
 
       <div className="col">
         <div className="form-text">Other Information</div>
-        <TextareaAutosize placeholder="Add addiitonal information such as frequency, duration, and/or quantity"className="textbox" onChange={handleNoteChange}/>
+        <TextareaAutosize placeholder="Add additional information such as frequency, duration, and/or quantity"className="textbox" onChange={handleNoteChange}/>
     </div>
 
     <div className="row d-flex justify-content-center">

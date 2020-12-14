@@ -4,8 +4,8 @@ import axios from "axios";
 import FormObject from "../utils/FormContext";
 import { useHistory } from 'react-router-dom';
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
+
+
 function SaveRequest() {
 
   let history = useHistory();
@@ -95,16 +95,15 @@ function SaveRequest() {
             emailAddress: claims_email,
           },
           treatmentRowData: requestedTreatments
-        }).then(() => {
+        }).then(()=> {
           history.push("/forms")
-        })
-          
         }
+        )}
   
         return (
-  <div>
-    <Button onClick={save}>Save Request</Button>
-  </div>);
-}
+        <div>
+          <button className="btn btn-success m-3" onClick={save}>Save Request</button>
+        </div>
+        )};
 
 export default SaveRequest;

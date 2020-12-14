@@ -57,7 +57,9 @@ function ViewRequest() {
   };
 
   return (
-    <div class="view-request">
+    <div class="container view-request">
+      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
+      <h6 className="text-center">DWC Form RFA</h6>
       
       <div className="row employee-information-row">
       <h3 className="">Employee Information</h3>
@@ -244,6 +246,8 @@ function ViewRequest() {
 </div>
 </div>
 
+<hr></hr>
+
       <div className="row">
         <h3>Requested Treatments</h3>
 
@@ -260,7 +264,6 @@ function ViewRequest() {
         return (
           <tbody>
               <tr>
-                {/* <th scope="row"></th> */}
                 <td className="col">{item.diagnosisName}</td>
                 <td className="col">{item.treatmentName}</td>
                 <td className="col">{item.note}</td>
@@ -269,15 +272,15 @@ function ViewRequest() {
         )
       })}
     </table>
-      
-      
-    
-
-
-      
     </div>
-    <Button onClick={handleBackClick} type="submit" value="back"> Back</Button>
-    <SaveRequest/>
+    <div className="row">
+      <div className="col"><strong>Total Number of Requested Treatments:</strong> {requestedTreatments.length}</div>
+    </div>
+    <div className="row mt-5">
+    <div  className="col-6"><button className="btn btn-secondary m-3" onClick={handleBackClick} type="submit" value="back">Back</button></div>
+    <div className="col-6"> <SaveRequest/></div>
+    </div>
+    
   </div>
   );
 }

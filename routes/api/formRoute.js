@@ -1,9 +1,31 @@
 var db = require("../../models");
 const router = require("express").Router();
 
+var DocSpring = require("docspring");
+var config = new DocSpring.Configuration();
+config.apiTokenId = 'api_test_LkEn6pDm4qNyQNjphS';
+config.apiTokenSecret = 'ELxPagSTSqmyxeyqcbtZLTm3PGbQy2fgbhYX5NHyXg';
+
+function getPDFURL(data) {
+    var client = new DocSpring.Client(config);
+    var template_id = "tpl_JmKeMrtxHxYyN6dN6H";
+    var submission_data = {
+        editable: false,
+        data: {
+            employee_full_name: "Test" },
+        };
+    return new Promise(function(resolve, reject) {
+        client.generatePDF(template_id, submission_data, (error, response)=> {
+            if (error) {
+                throw error;
+            }
+            resolve(response);
+        })
+    })
+}
+
 
 router.post("/", function (req, res) {
-    console.log(req.body)
 
     let dbIDs = {};
 
@@ -32,7 +54,6 @@ router.post("/", function (req, res) {
             npiNumber: req.body.physician.npiNumber
         })
             .then((physicianResponse) => {
-                console.log("Hello again");
 
                 dbIDs.physicianId = physicianResponse.dataValues.id
 
@@ -46,13 +67,12 @@ router.post("/", function (req, res) {
                     phoneNumber: req.body.claimsAdmin.phoneNumber,
                     faxNumber: req.body.claimsAdmin.faxNumber,
                     emailAddress: req.body.claimsAdmin.emailAddress,
+                }).then((claimsAdminResponse)=> {
+                    dbIDs.claimsAdminId = claimsAdminResponse.dataValues.id
+                    getPDFURL(req.body);
+
                 })
-                    .then((claimsAdminResponse) => {
-                        console.log('claims admin has been created')
-
-                        dbIDs.claimsAdminId = claimsAdminResponse.dataValues.id
-                       
-
+                    .then((success) => {
                         db.Form.create({
                             requestType: req.body.requestType,
                             treatmentRowData: req.body.treatmentRowData,

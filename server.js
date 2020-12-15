@@ -1,10 +1,9 @@
 const express = require("express");
-
 require("dotenv").config();
 
 const routes = require("./routes");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 const db = require("./models");
 
@@ -14,6 +13,7 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  const PORT = process.env.PORT
 
   app.get("/", (req, res) => {
     res.sendFile(PATH.join(__dirname, "./client/build/index.html"));

@@ -1,22 +1,25 @@
 var db = require("../../models");
 const router = require("express").Router();
-const axios = require("axios");
-require("env").config();
-
-
 
 var DocSpring = require("docspring");
 var config = new DocSpring.Configuration();
-config.apiTokenId = process.env.apiTokenId;
-config.apiTokenSecret = process.env.apiTokenSecret;
+config.apiTokenId = process.env.API_TOKEN_ID;
+config.apiTokenSecret = process.env.API_TOKEN_SECRET;
+
+
+
 
 function getPDFURL(data, dbIDs) {
-    console.log(data);
+  console.log(data);
   var client = new DocSpring.Client(config);
   var template_id = "tpl_JmKeMrtxHxYyN6dN6H";
   var submission_data = {
     editable: false,
     data: {
+      newRequest: data.requestType.newRequest == "" ? false : data.requestType.newRequest,
+      oralRequest: data.requestType.oralRequest == "" ? false : data.requestType.oralRequest,
+      resubmission: data.requestType.resubmission == "" ? false : data.requestType.resubmission,
+      expeditedReview: data.requestType.expeditedReview == "" ? false : data.requestType.expeditedReview,
       fullName: data.employee.lastName + ", " + data.employee.firstName + ", " + data.employee.middleName,
       dateOfInjury: data.employee.dateOfInjury,
       dateOfBirth: data.employee.dateOfBirth,
@@ -61,6 +64,7 @@ function getPDFURL(data, dbIDs) {
     },
   };
   return new Promise(function (resolve, reject) {
+    console.log(submission_data);
     client.generatePDF(
       template_id,
       submission_data,
@@ -71,9 +75,8 @@ function getPDFURL(data, dbIDs) {
         var submission = await response.submission;
         console.log(submission);
         db.Form.create({
-          requestType: data.requestType,
+          requestType: "New Request",
           treatmentRowData: data.treatmentRowData,
-          status: "Pending",
           pdfURL: submission.download_url,
           EmployeeId: dbIDs.employeeId,
           PhysicianId: dbIDs.physicianId,

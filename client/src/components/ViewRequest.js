@@ -13,7 +13,10 @@ function ViewRequest() {
 
   const {
     state: {
-      requestType,
+      newRequest, 
+      expeditedReview,
+      oralRequest,
+      resubmission,
       employee_firstName,
       employee_middleName,
       employee_lastName,
@@ -58,8 +61,31 @@ function ViewRequest() {
 
   return (
     <div class="container view-request">
-      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
-      <h6 className="text-center">DWC Form RFA</h6>
+
+      <div className="row request-type">
+      <h3 className="">Request Type</h3>
+        <div className="col">
+        <span class="form-text">New Request</span>
+        <input disabled type="text" class="form-control" value={newRequest} type="text" name="newRequest"/>
+        </div>
+        
+        <div className="col">
+        <span class="form-text">Expedited Review</span>
+        <input disabled type="text" class="form-control" value={expeditedReview} type="text" name="expeditedReview"/>
+        </div>
+        
+        <div className="col">
+        <span class="form-text">Oral Request</span>
+        <input disabled type="text" class="form-control" value={oralRequest} type="text" name="oralRequest"/>
+        </div>
+        
+        <div className="col">
+        <span class="form-text">Resubmission</span>
+        <input disabled type="text" class="form-control" value={resubmission} type="text" name="resubmission"/>
+        </div>
+      </div>
+
+      <hr></hr>
       
       <div className="row employee-information-row">
       <h3 className="">Employee Information</h3>
@@ -209,6 +235,12 @@ function ViewRequest() {
 
   <div className="row">
     <div className="col">
+      <span className="form-text">Company Name</span>
+      <input disabled className="form-control" value={claims_companyName} type="text" name="claims_companyName"/>
+    </div> 
+
+  <div className="row">
+    <div className="col">
       <span className="form-text">Address </span>
       <input disabled className="form-control" value={claims_address} type="text" name="claims_address"></input>
     </div>
@@ -244,10 +276,10 @@ function ViewRequest() {
   <input disabled className="form-control" value={claims_faxNumber} type="text" name="claims_faxNumber"></input>
   </div>
 </div>
+
 </div>
 
-<hr></hr>
-
+<hr className="mt-3"></hr>
       <div className="row">
         <h3>Requested Treatments</h3>
 
@@ -282,6 +314,7 @@ function ViewRequest() {
     </div>
     
   </div>
+</div>
   );
 }
 

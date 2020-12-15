@@ -67,11 +67,9 @@ function RequestTreatments() {
   return (
 
     <div className="container">
-      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
-      <h6 className="text-center">DWC Form RFA</h6>
-      <h3 className="text-center">Requested Treatments</h3>
+      <h3 className="text-center mt-2">Requested Treatments</h3>
 
-    <div>
+    <div className="row">
       {treatmentRowState.map((item, i) => (
         <TreatmentRow
           key={i}
@@ -85,7 +83,7 @@ function RequestTreatments() {
       ))}
 
       <div className="row d-flex justify-content-center">
-        <button class="col-3 btn btn-primary back-button m-3 pl-3" onClick={renderTreatmentRow}> + Add Treatment</button>
+        <button class="col-3 btn btn-primary mt-1 back-button" onClick={renderTreatmentRow}> + Add Treatment</button>
       </div>
       
       <div className="row">

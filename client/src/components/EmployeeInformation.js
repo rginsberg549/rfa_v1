@@ -37,57 +37,55 @@ function EmployeeInformation() {
 
   return (
     <div className="container">
-      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
-      <h6 className="text-center">DWC Form RFA</h6>
-      <h3 className="text-center">Employee Information</h3>
+      <h3 className="text-center mt-2">Employee Information</h3>
       <form>
-        <div class="row">
-          <div class="col">
-            <span class="form-text">First Name</span>
-            <input type="text" class="form-control" value={employee_firstName} onChange={handleInput} type="text" name="employee_firstName"/>
+        <div className="row">
+          <div className="col">
+            <span className="form-text">First Name</span>
+            <input type="text" className="form-control" value={employee_firstName} onChange={handleInput} type="text" name="employee_firstName"/>
            </div>
         
-        <div class="col">
-        <span class="form-text">Middle Name</span>
-          <input type="text" class="form-control" value={employee_middleName} onChange={handleInput} type="text" name="employee_middleName"/>
+        <div classNameName="col">
+        <span className="form-text">Middle Name</span>
+          <input type="text" className="form-control" value={employee_middleName} onChange={handleInput} type="text" name="employee_middleName"/>
           </div>
         
-        <div class="col">
-        <span class="form-text">Last Name</span>
-          <input type="text" class="form-control" value={employee_lastName} onChange={handleInput} type="text" name="employee_lastName"/>
+        <div className="col">
+        <span className="form-text">Last Name</span>
+          <input type="text" className="form-control" value={employee_lastName} onChange={handleInput} type="text" name="employee_lastName"/>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col-6">
-            <span class="form-text">Date of Injury</span>
-            <input type="date" class="form-control" value={employee_dateOfInjury} onChange={handleInput} name="employee_dateOfInjury" />
+        <div classNameName="row">
+          <div classNameName="col-6">
+            <span className="form-text">Date of Injury</span>
+            <input type="date" className="form-control" value={employee_dateOfInjury} onChange={handleInput} name="employee_dateOfInjury" />
           </div>
           
-          <div className="col-6">
-          <span class="form-text">Date of Birth</span>
-            <input type="date" class="form-control"  value={employee_dateOfBirth} onChange={handleInput} name="employee_dateOfBirth"/>
+          <div classNameName="col-6">
+          <span className="form-text">Date of Birth</span>
+            <input type="date" className="form-control"  value={employee_dateOfBirth} onChange={handleInput} name="employee_dateOfBirth"/>
           </div>
         </div>
 
-        <div className="row">
-          <div className="col">
-          <span class="form-text">Claim Number</span>
-            <input ype="text" class="form-control" placeholder="Claim Number" value={employee_claimNumber} onChange={handleInput} type="text" name="employee_claimNumber" />
+        <div classNameName="row">
+          <div classNameName="col">
+          <span className="form-text">Claim Number</span>
+            <input ype="text" className="form-control" placeholder="Claim Number" value={employee_claimNumber} onChange={handleInput} type="text" name="employee_claimNumber" />
           </div>
 
 
-          <div className="col">
-          <span class="form-text">Employer</span>
-          <input ype="text" class="form-control" placeholder="Employee" value={employee_employer} onChange={handleInput} type="text" name="employee_employer"/>
+          <div classNameName="col">
+          <span className="form-text">Employer</span>
+          <input ype="text" className="form-control" placeholder="Employee" value={employee_employer} onChange={handleInput} type="text" name="employee_employer"/>
           </div>
         </div>
         </form>
         
-        <div classNAme="row">
+        <div className="row">
           <div className="col text-center">
-            <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
-            <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>
+            <button onClick={handleBackClick} type="submit" value="back" className="btn btn-secondary back-button m-3"> Back </button>
+            <button onClick={handleNextClick} type="submit" value="next" className="btn btn-secondary next-button m-3"> Next </button>
           </div>
           
         </div> 

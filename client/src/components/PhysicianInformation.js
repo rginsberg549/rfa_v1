@@ -42,9 +42,7 @@ function PhysicianInformation() {
   return (
 
     <div className="container">
-      <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
-      <h6 className="text-center">DWC Form RFA</h6>
-      <h3 className="text-center">Physician Information</h3>
+      <h3 className="text-center mt-2">Physician Information</h3>
     
     <form>
       <div className="row">

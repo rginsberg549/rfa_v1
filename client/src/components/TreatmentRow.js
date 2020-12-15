@@ -75,7 +75,8 @@ function TreatmentRow(props) {
   return (
 
     <div className="container">
-      <div className="row">
+      <hr></hr>
+      <div className="row mt-2">
         <div className="col">
           <span className="form-text">Select A Diagnosis (Required): </span>
           <Select className="select" onChange={handleDiagnosisChange} value={diagnosisState}>
@@ -103,8 +104,8 @@ function TreatmentRow(props) {
         <TextareaAutosize placeholder="Add additional information such as frequency, duration, and/or quantity" className="textbox" onChange={handleNoteChange} value={noteState}/>
     </div>
 
-    <div className="row d-flex justify-content-center">
-      <button class="col-3 btn btn-danger back-button m-3" onClick={() => props.deleteTreatmentRow(props.rowKey)}> - Delete Treatment</button>
+    <div className="row d-flex justify-content-center mb-1">
+      <button class="col-3 btn btn-danger back-button" onClick={() => props.deleteTreatmentRow(props.rowKey)}>- Delete Treatment</button>
     </div>
 
     <div class="row ">

@@ -1,7 +1,10 @@
 import { createContext } from "react";
 
 const FormObject = createContext({
-  requestType: "",
+  newRequest: "", 
+  expeditedReview: "", 
+  oralRequest: "", 
+  resubmission: "",
   employee_firstName: "",
   employee_middleName: "",
   employee_lastName: "",

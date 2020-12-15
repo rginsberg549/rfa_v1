@@ -38,8 +38,6 @@ function AllForms() {
 
   return (
   <div class="container">
-    <h6 className="text-center">State of California, Division of Workers' Compensation</h6>
-      <h6 className="text-center">DWC Form RFA</h6>
       <h3 className="text-center">All RFA Forms</h3>
 
       <table class="table table-hover">

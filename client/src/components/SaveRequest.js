@@ -12,7 +12,10 @@ function SaveRequest() {
   
   const {
     state: {
-      requestType,
+      newRequest, 
+      expeditedReview,
+      oralRequest,
+      resubmission,
       employee_firstName,
       employee_middleName,
       employee_lastName,
@@ -59,8 +62,13 @@ function SaveRequest() {
 
     axios
       .post("/api/form", {
-          requestType: requestType,
-          employee: {
+        requestType: {
+          newRequest: newRequest,
+          expeditedReview: expeditedReview,
+          oralRequest: oralRequest,
+          resubmission: resubmission
+        },
+        employee: {
             firstName: employee_firstName,
             middleName: employee_middleName,
             lastName: employee_lastName,

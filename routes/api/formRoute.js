@@ -1,11 +1,14 @@
 var db = require("../../models");
 const router = require("express").Router();
 const axios = require("axios");
+require("env").config();
+
+
 
 var DocSpring = require("docspring");
 var config = new DocSpring.Configuration();
-config.apiTokenId = "api_test_LkEn6pDm4qNyQNjphS";
-config.apiTokenSecret = "ELxPagSTSqmyxeyqcbtZLTm3PGbQy2fgbhYX5NHyXg";
+config.apiTokenId = process.env.apiTokenId;
+config.apiTokenSecret = process.env.apiTokenSecret;
 
 function getPDFURL(data, dbIDs) {
     console.log(data);

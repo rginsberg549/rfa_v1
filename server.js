@@ -1,11 +1,15 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
-require("dotenv").config();
+
+const PORT = process.env.PORT || 8080;
+const db = require("./models");
 
 const routes = require("./routes");
-const app = express();
-const PORT = 8080;
 
-const db = require("./models");
+const app = express();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

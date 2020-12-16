@@ -1,0 +1,19 @@
+.view-request .next-button {
+    display: none;
+
+}
+
+.view-request .back-button {
+    display: none;
+
+}
+
+.select {
+    min-width: 100% !important;
+    overflow: hidden !important;
+}
+
+.textbox {
+    min-width: 100%;
+    min-height: 100px;
+}

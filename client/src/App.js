@@ -66,9 +66,10 @@ function App() {
 
   return (
     <div className="container">
-      <Navbar/>
+      
       <FormObject.Provider value={{ state, updateContextField, updateRequestedTreatments, setState}}>
         <Router>
+        <Navbar/>
           <Switch>
             <Route exact path="/" component={Home} />
             
@@ -101,9 +102,10 @@ function App() {
             </Route>
 
           </Switch>
+          <Footer/>
         </Router>
       </FormObject.Provider>
-      <Footer/>
+      
     </div>
   );
 }

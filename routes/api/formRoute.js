@@ -7,8 +7,6 @@ config.apiTokenId = process.env.API_TOKEN_ID;
 config.apiTokenSecret = process.env.API_TOKEN_SECRET;
 
 
-
-
 function getPDFURL(data, dbIDs) {
   console.log(data);
   var client = new DocSpring.Client(config);
@@ -74,8 +72,27 @@ function getPDFURL(data, dbIDs) {
         }
         var submission = await response.submission;
         console.log(submission);
+
+        if (data.requestType.newRequest) {
+          requestType="New Request";
+        }
+
+        if (data.requestType.oralRequest) {
+          requestType="Oral Request";
+        }
+
+        if (data.requestType.resubmission) {
+          requestType="Resubmission";
+        }
+
+        if (data.requestType.expeditedReview) {
+          requestType="Expedited Review";
+        }
+
+
+
         db.Form.create({
-          requestType: "New Request",
+          requestType: requestType,
           treatmentRowData: data.treatmentRowData,
           pdfURL: submission.download_url,
           EmployeeId: dbIDs.employeeId,

@@ -67,7 +67,10 @@ function RequestTreatments() {
   return (
 
     <div className="container">
-      <h3 className="text-center mt-2">Requested Treatments</h3>
+      <h2 className="text-center mt-3 mb-3">Requested Treatments</h2>
+
+      <hr className="mb-4"></hr>
+      <hr></hr>
 
     <div className="row">
       {treatmentRowState.map((item, i) => (
@@ -86,7 +89,7 @@ function RequestTreatments() {
         <button class="col-3 btn btn-primary mt-1 back-button" onClick={renderTreatmentRow}> + Add Treatment</button>
       </div>
       
-      <div className="row">
+      <div className="row mt-5 pt-5">
         <div className="col text-center">
           <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
           <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>

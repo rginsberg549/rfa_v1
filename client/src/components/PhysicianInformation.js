@@ -42,7 +42,9 @@ function PhysicianInformation() {
   return (
 
     <div className="container">
-      <h3 className="text-center mt-2">Physician Information</h3>
+      <h2 className="text-center mt-3 mb-3">Physician Information</h2>
+      <hr className="mb-4"></hr>
+      <hr></hr>
     
     <form>
       <div className="row">
@@ -121,7 +123,7 @@ function PhysicianInformation() {
     </div>
   </form>
 
-      <div className="row">
+      <div className="row mt-5 pt-5">
         <div className="col text-center">
           <button onClick={handleBackClick} type="submit" value="back" class="btn btn-secondary back-button m-3"> Back </button>
           <button onClick={handleNextClick} type="submit" value="next" class="btn btn-secondary next-button m-3"> Next </button>

@@ -20,12 +20,24 @@ function RequestType() {
   }
 
   return (
-    <div className="col">
+    <div className="col-4">
       <h3 className="text-center mt-2">Start A New Form</h3>
-        <button className="btn btn-secondary m-1 w-100" onClick={(e)=> { handleClick({newRequest: true, expeditedReview: false, oralRequest: false, resubmission: false})}} variant="contained" >New Request</button>
-        <button className="btn btn-secondary m-1 w-100" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: true, oralRequest: false, resubmission: false})}} variant="contained">Expedited Review</button>
-        <button className="btn btn-secondary m-1 w-100" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: false, oralRequest: true, resubmission: false})}} variant="contained">Written Confirmation of Oral Request</button>
-        <button className="btn btn-secondary m-1 w-100" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: false, oralRequest: false, resubmission: true})}} variant="contained">Resubmission</button>
+      
+      <div className="row">
+      <button className="btn btn-secondary m-1" onClick={(e)=> { handleClick({newRequest: true, expeditedReview: false, oralRequest: false, resubmission: false})}} variant="contained" >New Request</button>
+      </div>
+      
+      <div className="row">
+      <button className="btn btn-secondary m-1" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: true, oralRequest: false, resubmission: false})}} variant="contained">Expedited Review</button>
+      </div>
+
+      <div className="row"> 
+        <button className="btn btn-secondary m-1" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: false, oralRequest: true, resubmission: false})}} variant="contained">Written Confirmation of Oral Request</button>
+      </div>
+
+      <div className="row">
+        <button className="btn btn-secondary m-1" onClick={(e)=> { handleClick({newRequest: false, expeditedReview: false, oralRequest: false, resubmission: true})}} variant="contained">Resubmission</button>
+        </div>
     </div>
   )}
 

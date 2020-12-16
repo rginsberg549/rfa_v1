@@ -10,6 +10,7 @@ import ViewRequest from "./components/ViewRequest";
 import AllForms from "./components/AllForms";
 import FormObject from "./utils/FormContext";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
@@ -102,6 +103,7 @@ function App() {
           </Switch>
         </Router>
       </FormObject.Provider>
+      <Footer/>
     </div>
   );
 }

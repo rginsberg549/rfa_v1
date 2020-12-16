@@ -59,30 +59,37 @@ function ViewRequest() {
     history.goBack();
   };
 
+  let requestType = "";
+
+  if (newRequest) {
+    requestType="New Request";
+  }
+
+  if (oralRequest) {
+    requestType="Oral Request";
+  }
+
+  if (resubmission) {
+    requestType="Resubmission";
+  }
+
+  if (expeditedReview) {
+    requestType="Expedited Review";
+  }
+
   return (
     <div class="container view-request">
+      <h2 className="text-center mt-3 mb-3">View Request</h2>
+      <hr className="mb-4"></hr>
+      <hr></hr>
 
       <div className="row request-type">
-      <h3 className="">Request Type</h3>
-        <div className="col">
-        <span class="form-text">New Request</span>
-        <input disabled type="text" class="form-control" value={newRequest} type="text" name="newRequest"/>
-        </div>
-        
-        <div className="col">
-        <span class="form-text">Expedited Review</span>
-        <input disabled type="text" class="form-control" value={expeditedReview} type="text" name="expeditedReview"/>
-        </div>
-        
-        <div className="col">
-        <span class="form-text">Oral Request</span>
-        <input disabled type="text" class="form-control" value={oralRequest} type="text" name="oralRequest"/>
-        </div>
-        
-        <div className="col">
-        <span class="form-text">Resubmission</span>
-        <input disabled type="text" class="form-control" value={resubmission} type="text" name="resubmission"/>
-        </div>
+        <h3 className="">Request Type</h3>
+
+      <div class="col-6">
+          <span class="form-text">Request Type</span>
+          <input disabled type="text" class="form-control" value={requestType} type="text" name="employee_firstName"/>
+          </div>
       </div>
 
       <hr></hr>

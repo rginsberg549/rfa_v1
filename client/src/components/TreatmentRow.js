@@ -74,8 +74,7 @@ function TreatmentRow(props) {
 
   return (
 
-    <div className="container">
-      <hr></hr>
+    <div className="">
       <div className="row mt-2">
         <div className="col">
           <span className="form-text">Select A Diagnosis (Required): </span>
